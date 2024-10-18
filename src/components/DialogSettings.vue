@@ -1,0 +1,178 @@
+<script setup>
+import {
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogOverlay,
+  DialogPortal,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+  ScrollAreaRoot,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+  ScrollAreaViewport,
+} from "radix-vue";
+import { X, MousePointer, DatabaseZap, Pointer, PlaneTakeoff, Settings2 } from "lucide-vue-next";
+import Tooltip from "./ui/Tooltip.vue";
+import { useCounterStore } from "@/stores/counter";
+import { useStorage } from "@vueuse/core";
+import ToggleTheme from "./ui/ToggleTheme.vue";
+import { useSettingsStore } from "@/stores/settings";
+import DialogDeleteDB from "./DialogDeleteDB.vue";
+import { ref } from "vue";
+import DriverJsInit from "./Tour.ts";
+const settings = useSettingsStore();
+
+const counter = useCounterStore();
+const cursorPointer = useStorage("cursor", true);
+
+const showSettings = ref(false);
+const toggleCursor = () => {
+  cursorPointer.value = !cursorPointer.value;
+};
+
+const toggleTour = () => {
+  localStorage.setItem('product_tour_seen', 'false');
+  showSettings.value = false
+  setTimeout(() => {
+    DriverJsInit();
+  }, 300);
+};
+
+</script>
+
+<template>
+  <DialogRoot v-model:open="showSettings">
+    <Tooltip
+      name="Configuraciones"
+      :side="counter.showProjects ? 'bottom' : 'right'"
+    >
+      <DialogTrigger
+        class="flex items-center justify-center border interactive border-secondary hover:bg-secondary/80 bg-background size-8"
+      >
+        <Settings2 class="size-4" />
+      </DialogTrigger>
+    </Tooltip>
+    <DialogPortal>
+      <DialogOverlay
+        class="bg-background/95 backdrop-blur-sm data-[state=open]:animate-overlayShow fixed inset-0 z-[60]"
+      />
+      <DialogContent
+        class="md:data-[state=open]:animate-contentShow font-mono fixed top-6 md:top-[50%] left-[50%] max-h-[85vh] w-[98vw] max-w-[750px] translate-x-[-50%] md:translate-y-[-50%] bg-background rounded py-4 md:p-4 focus:outline-none z-[100] "
+      >
+        <DialogTitle class="text-foreground m-0 text-[17px] font-semibold">
+          Configuraciones
+        </DialogTitle>
+        <DialogDescription class="mt-1 text-sm text-muted-foreground">
+          Administra y configura tus preferencias.
+        </DialogDescription>
+        <ScrollAreaRoot
+          class="w-full border h-[78vh] mt-6 md:h-[70vh] border-secondary"
+          style="--scrollbar-size: 10px"
+        >
+          <ScrollAreaViewport class="w-full h-full">
+            <article class="max-w-full p-3 mx-auto prose dark:prose-invert">
+              <div class="grid gap-3">
+                <div class="flex-row items-start justify-between hidden gap-3 p-3 border md:flex border-secondary">
+                  <div
+                    class="space-y-0.5"
+                    v-auto-animate
+                  >
+                    <label class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      Tour navegacion de la app
+                    </label>
+                    <p class="text-xs text-muted-foreground">
+                      Activar el tutorial al ingresar a la app.
+                    </p>
+                  </div>
+                  <button
+                    @click="toggleTour()"
+                    class="flex items-center justify-center border interactive border-primary bg-background shrink-0 hover:bg-secondary/80 size-8"
+                  >
+                    <PlaneTakeoff class="size-5" />
+                  </button>
+                </div>
+                <div class="flex-row items-start justify-between hidden p-3 border sm:flex border-secondary">
+                  <div class="space-y-0.5">
+                    <label class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      Puntero del mouse </label>
+                    <p class="text-xs text-muted-foreground">
+                      Activa o desactiva la manito en el cursor del mouse
+                    </p>
+                  </div>
+                  <button
+                    @click="toggleCursor()"
+                    class="flex items-center justify-center border interactive border-primary bg-background hover:bg-secondary/80 size-8"
+                  >
+                    <Pointer
+                      v-if="cursorPointer"
+                      class="size-4"
+                    />
+                    <MousePointer
+                      v-else
+                      class="size-4"
+                    />
+                  </button>
+                </div>
+                <div class="relative flex flex-row items-start justify-between p-3 border border-secondary">
+                  <div class="space-y-0.5">
+                    <label class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"> Modo
+                      de color </label>
+                    <p class="text-xs text-muted-foreground">
+                      Alterná entre modo oscuro/claro/sistema, tambien podes elegir un color primario.
+                    </p>
+                  </div>
+                  <div class="!ring-1 !ring-primary shrink-0 w-8 overflow-hidden hover: h-8">
+                    <ToggleTheme />
+                  </div>
+                </div>
+
+                <div class="flex flex-row items-start justify-between gap-3 p-3 border border-secondary">
+                  <div class="space-y-0.5">
+                    <label class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      Generar json exportable al iniciar la aplicación.</label>
+                    <p class="text-xs text-muted-foreground">
+                      Activar la opción para exportar la base de datos localmente para backup al iniciar
+                    </p>
+                  </div>
+                  <button
+                    @click="settings.toggle_save_on_load()"
+                    class="flex items-center justify-center border interactive border-primary bg-background hover:bg-secondary/80 size-8 shrink-0"
+                    :class="settings.save_on_load ? 'hover:!bg-primary bg-primary hover:text-primary-foreground text-primary-foreground' : 'text-muted-foreground'"
+                  >
+                    <DatabaseZap class="size-5" />
+                  </button>
+                </div>
+                <h4 class="mt-3 mb-0 text-red-600">
+                  Atención!
+                </h4>
+                <div class="flex flex-row items-center justify-between gap-3 p-3 border border-red-600">
+                  <label
+                    class="text-sm font-medium text-red-600 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Eliminar la base de datos </label>
+                  <DialogDeleteDB />
+                </div>
+              </div>
+            </article>
+          </ScrollAreaViewport>
+          <ScrollAreaScrollbar
+            class="flex select-none touch-none p-0.5 bg-secondary transition-colors duration-[160ms] ease-out hover:bg-background data-[orientation=vertical]:w-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:h-2.5"
+            orientation="vertical"
+          >
+            <ScrollAreaThumb
+              class="flex-1 bg-primary rounded-[10px] relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-full before:h-full before:min-w-[44px] before:min-h-[44px]"
+            />
+          </ScrollAreaScrollbar>
+        </ScrollAreaRoot>
+        <DialogClose
+          class="absolute inline-flex items-center justify-center appearance-none top-4 text-foreground hover:bg-secondary/80 right-3 size-7 focus:shadow focus:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:text-primary"
+          aria-label="Close"
+        >
+          <X />
+        </DialogClose>
+      </DialogContent>
+    </DialogPortal>
+  </DialogRoot>
+</template>
