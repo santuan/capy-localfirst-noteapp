@@ -30,7 +30,7 @@ watch(isOverDropZone, (v) => {
     <button
       v-show="counter.showProjects"
       @click="counter.showProjects = !counter.showProjects"
-      class="fixed inset-0 z-40 bg-background/60 !border-0 !ring-0 !outline-none lg:hidden !opacity-100"
+      class="fixed inset-0 !z-40 bg-background/90 !border-0 !ring-0 !outline-none lg:hidden"
     />
   </div>
 </template>
