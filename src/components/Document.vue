@@ -1,5 +1,4 @@
 <script setup>
-import DialogProjects from "./DialogProjects.vue";
 import DocumentEditor from "./DocumentEditor.vue";
 import DeleteDocument from "./ui/ButtonDeleteDocument.vue";
 import SplitterGroup from "./ui/SplitterGroup.vue";
@@ -11,7 +10,6 @@ import SplitterGroup from "./ui/SplitterGroup.vue";
       <DocumentEditor />
     </SplitterGroup>
     <DeleteDocument />
-    <DialogProjects />
   </div>
 </template>
 

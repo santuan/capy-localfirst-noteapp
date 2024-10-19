@@ -36,6 +36,7 @@ const props = defineProps({
   <TooltipProvider>
     <TooltipRoot
       :delay-duration="400"
+      ignore-non-keyboard-focus
     >
       <TooltipTrigger as-child>
         <slot />
@@ -43,26 +44,22 @@ const props = defineProps({
       <TooltipPortal>
         <TooltipContent
           :side="props.side"
-          class="data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade select-none max-w-80 bg-primary px-2.5 py-1.5 will-change-[transform,opacity] flex gap-2 items-center justify-center"
+          class="data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade ring-primary ring-1 select-none max-w-80 bg-secondary px-2.5 py-1.5 flex gap-2 items-center justify-center"
           :class="props.shortcut ? 'flex-col' : ' '"
-          :side-offset="0"
+          :side-offset="6"
           :align="props.align"
+          style="-webkit-font-smoothing: subpixel-antialiased;"
         >
           <span
             v-show="props.name"
-            class="font-mono text-xs font-medium text-primary-foreground"
+            class="font-mono text-xs font-medium text-secondary-foreground"
           >{{ props.name }}</span>
           <kbd
             v-show="props.shortcut"
-            class="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded bg-muted/20 px-1.5 font-mono text-[10px] text-primary-foreground font-extrabold opacity-100"
+            class="pointer-events-none uppercase inline-flex h-5 select-none items-center gap-1 rounded bg-primary/20 px-1.5 font-mono text-[10px] text-secondary-foreground font-extrabold opacity-100"
           >
             {{ props.shortcut }}
           </kbd>
-          <TooltipArrow
-            class="fill-primary"
-            :width="14"
-            :height="5"
-          />
         </TooltipContent>
       </TooltipPortal>
     </TooltipRoot>

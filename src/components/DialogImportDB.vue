@@ -14,7 +14,15 @@ import {
 import { shallowRef } from "vue";
 
 import { useCounterStore } from "@/stores/counter";
-import { useFileDialog, useTimeoutFn, useDropZone } from "@vueuse/core";
+import { useFileDialog, useTimeoutFn, useDropZone, useMagicKeys, whenever } from "@vueuse/core";
+
+const keys = useMagicKeys();
+const magicImportDB = keys["ctrl+alt+i"];
+
+whenever(magicImportDB, (n) => {
+  if (n)
+    counter.showImportModal = true
+})
 
 const counter = useCounterStore();
 const dropZoneRef = shallowRef();
@@ -35,7 +43,7 @@ onChange((files) => {
     filesData.value = files;
     useTimeoutFn(() => {
       filesData.value = [];
-    }, 3000);
+    }, 300);
   }
 });
 
@@ -50,7 +58,7 @@ function onDrop(files) {
     filesData.value = files;
     useTimeoutFn(() => {
       filesData.value = [];
-    }, 3000);
+    }, 300);
   }
 }
 </script>
@@ -110,7 +118,6 @@ function onDrop(files) {
       </AlertDialogContent>
     </AlertDialogPortal>
   </AlertDialogRoot>
-  
 </template>
 
 <style>

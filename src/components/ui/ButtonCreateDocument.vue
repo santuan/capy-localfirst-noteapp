@@ -1,7 +1,6 @@
 <script setup>
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
-import Tooltip from "@/components/ui/Tooltip.vue";
 import { Plus } from "lucide-vue-next";
 import {  breakpointsTailwind, useBreakpoints, } from "@vueuse/core";
 const breakpoints = useBreakpoints(breakpointsTailwind);

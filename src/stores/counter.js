@@ -21,7 +21,7 @@ export const useCounterStore = defineStore("counter", () => {
   const shareOptions = shallowRef([]);
   const content_editable = shallowRef(true);
   const editor = shallowRef(null);
-  const showSettings = shallowRef(null);
+  const showSettings = shallowRef(false);
 
   function toggleEditable() {
     content_editable.value = !content_editable.value;

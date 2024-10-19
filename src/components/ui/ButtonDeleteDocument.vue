@@ -13,21 +13,37 @@ import {
 import { Trash2, X } from "lucide-vue-next";
 import { useCounterStore } from "@/stores/counter";
 import { ref } from "vue";
+import {
+  useMagicKeys,
+  whenever,
+} from "@vueuse/core";
+import Tooltip from "./Tooltip.vue";
 const counter = useCounterStore();
-
+const keys = useMagicKeys();
+const magicDeleteDocument = keys["ctrl+shift-delete"];
 const showAlertDialog = ref(false);
 
+whenever(magicDeleteDocument, (n) => {
+  if (n)
+  showAlertDialog.value = true
+})
 </script>
 
 <template>
   <AlertDialogRoot v-model:open="showAlertDialog">
-    <AlertDialogTrigger
-      
-      class="fixed bottom-0 right-0 flex items-center justify-center ml-auto text-xs ButtonDeleteDocument size-8 hover:bg-primary/30 bg-primary/10"
-      :class="counter.loaded_id ? 'text-primary' : 'hidden'"
+    <Tooltip
+      name="Eliminar documento"
+      side="top"
+      :align="'end'"
+      shortcut="ctrl+shift-delete"
     >
-      <Trash2 class="size-4" />
-    </AlertDialogTrigger>
+      <AlertDialogTrigger
+        class="fixed bottom-0 right-0 flex items-center justify-center ml-auto text-xs ButtonDeleteDocument size-8 hover:bg-primary/30 bg-primary/10"
+        :class="counter.loaded_id ? 'text-primary' : 'hidden'"
+      >
+        <Trash2 class="size-4" />
+      </AlertDialogTrigger>
+    </Tooltip>
     <AlertDialogPortal>
       <AlertDialogOverlay class="fixed inset-0 z-50 bg-black/50" />
       <AlertDialogContent class="md:data-[state=open]:animate-contentShow fixed z-50 w-[95vw] max-w-xs rounded-lg p-4 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-background text-foreground border border-secondary font-mono">

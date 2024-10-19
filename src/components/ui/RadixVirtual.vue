@@ -95,7 +95,7 @@ const filteredOptions = computed(() =>
           :side-offset="8"
           align="end"
           :align-offset="-8"
-          class="w-64 lg:max-w-7xl bg-background shadow-md focus:shadow-lg will-change-[transform,opacity] data-[state=open]:data-[side=top]:animate-slideDownAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade border border-secondary"
+          class="w-64 lg:max-w-7xl bg-background shadow-md focus:shadow-lg will-change-[transform,opacity] data-[state=open]:data-[side=top]:animate-slideDownAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=bottom]:animate-slideUpAndFade z-[90] data-[state=open]:data-[side=left]:animate-slideRightAndFade border border-secondary"
         >
           <div class="flex flex-col gap-2.5">
             <ListboxRoot

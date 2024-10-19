@@ -14,15 +14,25 @@ import {
   ScrollAreaViewport,
 } from "radix-vue";
 import { CircleHelp, TentTree, X } from "lucide-vue-next";
+import { useMagicKeys, whenever } from '@vueuse/core'
+
 import Tooltip from "./ui/Tooltip.vue";
 import DialogChangelog from "./DialogChangelog.vue";
 import { useCounterStore } from "@/stores/counter";
+import { ref } from "vue";
 const counter = useCounterStore();
+const keys = useMagicKeys();
+const magicAbout = keys["ctrl+alt+q"];
+const open = ref(false)
 
+whenever(magicAbout, (n) => {
+  if (n)
+    open.value = true
+})
 </script>
 
 <template>
-  <DialogRoot>
+  <DialogRoot v-model:open="open">
     <Tooltip
       name="Acerca de esta app"
       :side="counter.showProjects ? 'bottom' : 'right'"

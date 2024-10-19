@@ -1,8 +1,8 @@
 <script setup>
 import { useCounterStore } from "@/stores/counter";
 import {
-  CircleX,
   Search,
+  CircleX,
 } from "lucide-vue-next";
 import { storeToRefs } from "pinia";
 import { computed, watch, shallowRef } from "vue";
@@ -23,6 +23,7 @@ import SearchItemChecked from "./SearchItemChecked.vue";
 import SelectSort from "./ui/SelectSort.vue";
 import ButtonCreateDocument from "./ui/ButtonCreateDocument.vue";
 import EditDatabaseTitle from "./ui/EditDatabaseTitle.vue";
+import Tooltip from "./ui/Tooltip.vue";
 
 const target = shallowRef(null);
 const editing = shallowRef(false);
@@ -81,10 +82,10 @@ const results = computed(() => {
     <EditDatabaseTitle />
     <ButtonCreateDocument />
     <div
-      class="relative grid grid-cols-3 w-full gap-0.5 px-1.5  p-0.5 text-xs bg-secondary/4 ring-secondary/60 focus-within:ring-secondary"
+      class="relative grid grid-cols-3 w-full gap-1 px-1.5  p-0.5 text-xs bg-secondary/4 ring-secondary/60 focus-within:ring-secondary"
     >
       <div
-        class="relative flex items-center justify-between w-full h-8 col-span-2 border-2 hover:border-primary focus-within:border-primary border-secondary"
+        class="relative flex items-center justify-between w-full h-8 col-span-2 border hover:border-primary focus-within:border-primary border-secondary"
       >
         <Search class="absolute top-0 left-0 ml-2 h-7 size-3 text-foreground/40" />
         <input
@@ -95,19 +96,20 @@ const results = computed(() => {
         >
         <span
           v-if="!searchTerm"
-          class="absolute top-0 right-0 flex items-center justify-center h-7 scale-90 mr-0.5 text-xs w-7"
+          class="absolute top-[2.875px] right-[1.25px] flex items-center justify-center h-[25px] scale-90 mr-0.5 text-xs w-7"
         >
           {{ allItemsTodo?.length }}
         </span>
         <button
           v-else
-          class="absolute top-0 right-0 flex items-center justify-center gap-2 px-2 text-xs font-medium scale-90 ring-1 ring-primary h-7 bg-primary hover:outline-none hover:bg-primary/90 text-primary-foreground focus-visible:ring-2 focus:outline focus:ring-foreground"
+          class="absolute top-[2.875px] right-[1.25px] flex items-center justify-center gap-1 px-2 text-xs font-medium scale-90 ring-1 ring-primary/50 h-[25px] bg-primary hover:outline-none hover:bg-primary text-primary-foreground focus-visible:ring-2 focus:outline focus:ring-primary/50 border-primary"
           @click="searchTerm = ''"
         >
           <span class="min-w-3">{{ results.length }}</span>
-          <CircleX class="size-3" />
+          <CircleX class="size-4" />
         </button>
       </div>
+      
       <div class="shrink-0">
         <SelectSort />
       </div>

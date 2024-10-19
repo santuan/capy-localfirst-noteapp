@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "radix-vue";
-import { Download, Trash, X } from "lucide-vue-next";
+import { Trash, X } from "lucide-vue-next";
 import { onMounted, shallowRef, watch } from "vue";
 import { useCounterStore } from "@/stores/counter";
 const counter = useCounterStore();
@@ -18,7 +18,7 @@ import {  refDebounced } from "@vueuse/core";
 import { toast } from 'vue-sonner'
 
 
-const { file_name } = storeToRefs(counter);
+const { file_name, showSettings } = storeToRefs(counter);
 
 const input = shallowRef(file_name);
 const showDeleteModal = shallowRef(false);
@@ -33,7 +33,7 @@ function clear(){
   setTimeout(() => {
     toast.success('Base de datos eliminada')
     showDeleteModal.value = false
-    counter.showSettings = false
+    showSettings.value = false
   }, 300);
 }
 
@@ -45,7 +45,7 @@ onMounted(() => {
 <template>
   <DialogRoot v-model:open="showDeleteModal">
     <DialogTrigger
-      class="flex items-center justify-center gap-2 text-white bg-red-600 border border-red-800 size-8 hover:bg-red-600/80 border-primary hover:outline-red-800"
+      class="flex items-center justify-center gap-2 text-white bg-red-600 border border-red-600 size-8 hover:border-red-800 focus:border-4 outline-red-400 !outline-offset-2"
       aria-label="Update dimensions"
     >
       <Trash class="size-4" />

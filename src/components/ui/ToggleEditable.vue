@@ -12,8 +12,9 @@ const counter = useCounterStore();
         ? 'Cambiar a previsualizar'
         : 'Cambiar a modo editable'
     "
-    shortcut="Ctrl Shift E"
-    side="bottom"
+    shortcut="ctrl+alt+p"
+    :side="counter.showProjects ? 'bottom' : 'right'"
+    :align="counter.showProjects ? 'end' : 'center'"
   >
     <button
       @click="counter.toggleEditable"

@@ -16,21 +16,28 @@ import {
 import { X, MousePointer, DatabaseZap, Pointer, PlaneTakeoff, Settings2 } from "lucide-vue-next";
 import Tooltip from "./ui/Tooltip.vue";
 import { useCounterStore } from "@/stores/counter";
-import { useStorage } from "@vueuse/core";
+import { useStorage, useMagicKeys, whenever } from '@vueuse/core'
+
 import ToggleTheme from "./ui/ToggleTheme.vue";
 import { useSettingsStore } from "@/stores/settings";
 import DialogDeleteDB from "./DialogDeleteDB.vue";
-import { ref } from "vue";
 import DriverJsInit from "./Tour.ts";
+import { storeToRefs } from "pinia";
 const settings = useSettingsStore();
 
 const counter = useCounterStore();
 const cursorPointer = useStorage("cursor", true);
-
-const showSettings = ref(false);
+const keys = useMagicKeys();
+const magicSettings = keys["ctrl+alt+w"];
+const { showSettings } = storeToRefs(counter);
 const toggleCursor = () => {
   cursorPointer.value = !cursorPointer.value;
 };
+
+whenever(magicSettings, (n) => {
+  if (n)
+  showSettings.value = true
+})
 
 const toggleTour = () => {
   localStorage.setItem('product_tour_seen', 'false');
@@ -79,7 +86,7 @@ const toggleTour = () => {
                     class="space-y-0.5"
                     v-auto-animate
                   >
-                    <label class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    <label class="text-sm font-medium ">
                       Tour navegacion de la app
                     </label>
                     <p class="text-xs text-muted-foreground">
@@ -88,14 +95,14 @@ const toggleTour = () => {
                   </div>
                   <button
                     @click="toggleTour()"
-                    class="flex items-center justify-center border interactive border-primary bg-background shrink-0 hover:bg-secondary/80 size-8"
+                    class="flex focus:border-primary ring-foreground items-center justify-center border border-secondary bg-background shrink-0 hover:bg-secondary/80 size-8"
                   >
                     <PlaneTakeoff class="size-5" />
                   </button>
                 </div>
                 <div class="flex-row items-start justify-between hidden p-3 border sm:flex border-secondary">
                   <div class="space-y-0.5">
-                    <label class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    <label class="text-sm font-medium ">
                       Puntero del mouse </label>
                     <p class="text-xs text-muted-foreground">
                       Activa o desactiva la manito en el cursor del mouse
@@ -103,7 +110,7 @@ const toggleTour = () => {
                   </div>
                   <button
                     @click="toggleCursor()"
-                    class="flex items-center justify-center border interactive border-primary bg-background hover:bg-secondary/80 size-8"
+                    class="flex focus:border-primary ring-foreground items-center justify-center border border-secondary bg-background shrink-0 hover:bg-secondary/80 size-8"
                   >
                     <Pointer
                       v-if="cursorPointer"
@@ -117,20 +124,18 @@ const toggleTour = () => {
                 </div>
                 <div class="relative flex flex-row items-start justify-between p-3 border border-secondary">
                   <div class="space-y-0.5">
-                    <label class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"> Modo
+                    <label class="text-sm font-medium "> Modo
                       de color </label>
                     <p class="text-xs text-muted-foreground">
                       Alterná entre modo oscuro/claro/sistema, tambien podes elegir un color primario.
                     </p>
                   </div>
-                  <div class="!ring-1 !ring-primary shrink-0 w-8 overflow-hidden hover: h-8">
-                    <ToggleTheme />
-                  </div>
+                  <ToggleTheme />
                 </div>
 
                 <div class="flex flex-row items-start justify-between gap-3 p-3 border border-secondary">
                   <div class="space-y-0.5">
-                    <label class="text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    <label class="text-sm font-medium ">
                       Generar json exportable al iniciar la aplicación.</label>
                     <p class="text-xs text-muted-foreground">
                       Activar la opción para exportar la base de datos localmente para backup al iniciar
@@ -138,7 +143,7 @@ const toggleTour = () => {
                   </div>
                   <button
                     @click="settings.toggle_save_on_load()"
-                    class="flex items-center justify-center border interactive border-primary bg-background hover:bg-secondary/80 size-8 shrink-0"
+                    class="flex focus:border-primary ring-foreground items-center justify-center border border-secondary bg-background shrink-0 hover:bg-secondary/80 size-8"
                     :class="settings.save_on_load ? 'hover:!bg-primary bg-primary hover:text-primary-foreground text-primary-foreground' : 'text-muted-foreground'"
                   >
                     <DatabaseZap class="size-5" />
@@ -149,7 +154,7 @@ const toggleTour = () => {
                 </h4>
                 <div class="flex flex-row items-center justify-between gap-3 p-3 border border-red-600">
                   <label
-                    class="text-sm font-medium text-red-600 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    class="text-sm font-medium text-red-600 "
                   >
                     Eliminar la base de datos </label>
                   <DialogDeleteDB />

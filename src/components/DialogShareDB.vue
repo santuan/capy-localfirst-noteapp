@@ -13,7 +13,12 @@ import { Download, X } from "lucide-vue-next";
 import { onMounted, shallowRef, watch } from "vue";
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
-import {  refDebounced } from "@vueuse/core";
+import {  refDebounced, useMagicKeys, whenever } from "@vueuse/core";
+
+const keys = useMagicKeys();
+const magicShareDB = keys["ctrl+alt+e"];
+
+
 
 const counter = useCounterStore();
 const { file_name, showShareModal } = storeToRefs(counter);
@@ -23,6 +28,12 @@ const debounced = refDebounced(input, 100);
 watch(debounced, (v) => {
   if (v) counter.share_database();
 });
+
+whenever(magicShareDB, (n) => {
+  if (n)
+    counter.showShareModal = true
+})
+
 
 onMounted(() => {
   counter.share_database();

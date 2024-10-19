@@ -10,6 +10,7 @@ import { useCounterStore } from "@/stores/counter";
 import { useMagicKeys, whenever, breakpointsTailwind, useBreakpoints, useStorage } from "@vueuse/core";
 import { onMounted } from "vue";
 import DialogSettings from "./DialogSettings.vue";
+import DialogCommandMenu from "./ui/DialogCommandMenu.vue";
 
 const counter = useCounterStore();
 const breakpoints = useBreakpoints(breakpointsTailwind);
@@ -24,13 +25,13 @@ onMounted(() => {
 
 const keys = useMagicKeys();
 const CtrlM = keys["ctrl+m"];
-const CtrlShiftE = keys["ctrl+shift+e"];
+const magicPreview = keys["ctrl+alt+p"];
 
 whenever(CtrlM, () => {
   counter.showProjects = !counter.showProjects;
 });
 
-whenever(CtrlShiftE, () => {
+whenever(magicPreview, () => {
   counter.content_editable = !counter.content_editable;
 });
 
@@ -39,31 +40,34 @@ whenever(CtrlShiftE, () => {
 <template>
   <div
     class="flex items-center justify-between my-0.5  group"
-    :class="counter.showProjects ? ' mr-0.5 ' : ' flex-col '"
+    :class="counter.showProjects ? ' ml-1 mr-0.5 ' : ' flex-col '"
   >
     <button
       @click="counter.showProjects = !counter.showProjects"
+      :class="counter.showProjects ? ' ' : ' translate-x-[1px] '"
       class="flex items-center justify-start gap-2 p-2"
     >
       <TentTree class="size-4" />
       <span
         class="text-xs text-foreground"
-        v-show="counter.showProjects"
+        v-if="counter.showProjects"
       >Menú</span>
     </button>
     
     <div
       class="grid "
-      :class="counter.showProjects ? 'grid-cols-5 gap-0.5' : ' grid-cols-1 px-1 gap-1 mt-1'"
+      :class="counter.showProjects ? 'grid-cols-6 gap-0.5' : ' grid-cols-1 px-1 gap-1 mt-1'"
     >
       <DialogInfo />
       <DialogSettings />
       <ToggleTheme />
+      <DialogCommandMenu />
       <ToggleEditable />
       <Tooltip
         :name="counter.showProjects ? 'Cerrar panel' : ' Abrir panel'"
         shortcut="Ctrl M"
-        side="right"
+        :align="counter.showProjects ? 'end' : 'center'"
+        :side="counter.showProjects ? 'bottom' : 'right'"
       >
         <button
           v-show="counter.showProjects"
@@ -79,7 +83,7 @@ whenever(CtrlShiftE, () => {
     <button
       @click="counter.showProjects = !counter.showProjects"
       v-show="!counter.showProjects"
-      class="absolute z-10 inset-1 bottom-2 top-[11.5rem]"
+      class="absolute z-10 inset-1 bottom-2 top-[13.75rem]"
     >
       <ArrowRightToLine class="mx-auto duration-100 opacity-25 size-4 -translate-y-14 group-hover:opacity-90" />
     </button>

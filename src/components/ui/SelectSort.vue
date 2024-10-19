@@ -7,7 +7,6 @@ import {
 import {
   useStorage,
 } from "@vueuse/core";
-
 import {
   SelectContent,
   SelectGroup,
@@ -21,9 +20,7 @@ import {
   SelectValue,
   SelectViewport,
 } from "radix-vue";
-
 const sortOption = useStorage("sortItemsBy", "name");
-
 
 </script>
 
@@ -41,7 +38,7 @@ const sortOption = useStorage("sortItemsBy", "name");
         class="min-w-[160px] bg-background will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade z-[100] font-mono border border-secondary"
         position="popper"
         :side-offset="5"
-        align="end"
+        :align="'end'"
       >
         <SelectViewport class="">
           <SelectLabel class="p-2 text-xs font-medium text-primary">
@@ -55,7 +52,7 @@ const sortOption = useStorage("sortItemsBy", "name");
               <SelectItemIndicator class="absolute text-primary right-0 w-[25px] inline-flex items-center justify-center">
                 <Check class="size-4" />
               </SelectItemIndicator>
-              <SelectItemText> Nombre </SelectItemText>
+              <SelectItemText>Nombre</SelectItemText>
             </SelectItem>
             <SelectItem
               class="text-xs leading-none text-foreground flex items-center h-8 px-1 py-2 pr-12 relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-secondary/50 data-[highlighted]:text-foreground"
@@ -64,7 +61,7 @@ const sortOption = useStorage("sortItemsBy", "name");
               <SelectItemIndicator class="absolute text-primary right-0 w-[25px] inline-flex items-center justify-center">
                 <Check class="size-4" />
               </SelectItemIndicator>
-              <SelectItemText> Fecha </SelectItemText>
+              <SelectItemText>Fecha</SelectItemText>
             </SelectItem>
           </SelectGroup>
         </SelectViewport>

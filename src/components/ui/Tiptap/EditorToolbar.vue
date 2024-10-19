@@ -90,12 +90,7 @@ function setLink() {
     .run();
 }
 
-function addIframe() {
-  const url = window.prompt("Ingresar URL del iframe");
-  if (url) {
-    editor.value.chain().focus().setIframe({ src: url }).run();
-  }
-}
+
 </script>
 
 
@@ -186,17 +181,7 @@ function addIframe() {
         <Video class="size-4" />
       </button>
     </Tooltip>
-    <Tooltip
-      name="Iframe"
-      side="bottom"
-    >
-      <button
-        @click="addIframe"
-        class="flex items-center justify-center outline-none interactive size-8 focus-visible:border-primary border-secondary"
-      >
-        <Globe class="size-4" />
-      </button>
-    </Tooltip>
+
 
     <template v-if="showEditorToolbar">
       <DropdownMenuRoot>
@@ -554,7 +539,7 @@ function addIframe() {
       <Tooltip
         name="Quitar estilos de linea"
         side="bottom"
-        shortcut="Negrita - Italica - Tachado - Link - Código en linea"
+        shortcut="Negrita - Italica - Link"
       >
         <button
           @click="editor.chain().focus().unsetAllMarks().run()"

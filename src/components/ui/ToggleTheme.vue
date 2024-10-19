@@ -16,10 +16,7 @@ const counter = useCounterStore();
 const mode = useColorMode();
 
 const colorTheme = useStorage("theme", "theme-blue");
-
 const isDark = useDark()
-
-console.log(isDark)
 
 const favicon = computed(() => {
   // Extract the color from the theme (e.g., "rose", "blue", etc.)

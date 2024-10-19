@@ -30,14 +30,6 @@ async function close() {
         <p>
           Click en recargar para actualizar la app o click en cerrar para dejarla pendiente.
         </p>
-        <a
-          target="_blank"
-          class="flex items-center justify-center gap-2"
-          href="https://github.com/sr-couto/smrc/blob/main/src/components/DialogChangelog.vue#L68"
-        >
-          Github changelog
-          <SquareArrowOutUpRight class="size-3" />
-        </a>
       </div>
     </div>
     <div class="grid grid-cols-2 gap-2">
