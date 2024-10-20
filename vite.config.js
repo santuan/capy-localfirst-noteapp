@@ -20,9 +20,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'prompt',
       manifest: {
-        name: 'SMRC',
-        short_name: 'SMRC',
-        description: 'SMRC',
+        name: 'DevNote',
+        short_name: 'DevNote',
+        description: 'DevNote',
         theme_color: '#020817'
       },
       workbox: {

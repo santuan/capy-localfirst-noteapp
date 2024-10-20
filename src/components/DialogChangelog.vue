@@ -15,7 +15,7 @@ import {
 } from "radix-vue";
 import { X } from "lucide-vue-next";
 
-const lastVersion = "0.1.3"
+const lastVersion = "0.1.4"
 
 const props = defineProps({
   button: {

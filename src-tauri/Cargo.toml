@@ -1,6 +1,6 @@
 [package]
-name = "Capynotes"
-version = "0.1.3"
+name = "DevNote"
+version = "0.1.4"
 description = "A complex Todo app"
 authors = ["stn9000"]
 license = ""

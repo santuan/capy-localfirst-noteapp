@@ -106,8 +106,8 @@ function toggleFixed(item, isFixed) {
     </button>
     <AlertDialogRoot v-model:open="showAlertDialog">
       <AlertDialogPortal>
-        <AlertDialogOverlay class="fixed inset-0 z-50 bg-black/50" />
-        <AlertDialogContent class="md:data-[state=open]:animate-contentShow fixed z-50 w-[95vw] max-w-md rounded-lg p-4 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-background text-foreground border border-secondary font-mono">
+        <AlertDialogOverlay class="fixed inset-0 z-[999] bg-black/50" />
+        <AlertDialogContent class="md:data-[state=open]:animate-contentShow fixed z-[999] w-[95vw] max-w-md rounded-lg p-4 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-background text-foreground border border-secondary font-mono">
           <AlertDialogTitle class="text-sm font-medium">
             Cambios sin guardar
           </AlertDialogTitle>

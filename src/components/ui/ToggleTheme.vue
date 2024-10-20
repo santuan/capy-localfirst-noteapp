@@ -19,10 +19,7 @@ const colorTheme = useStorage("theme", "theme-blue");
 const isDark = useDark()
 
 const favicon = computed(() => {
-  // Extract the color from the theme (e.g., "rose", "blue", etc.)
   const theme = colorTheme.value.replace("theme-", ""); 
-
-  // Construct the favicon name based on the theme and dark mode
   return isDark.value ? `${theme}-dark.png` : `${theme}-light.png`;
 });
 
@@ -70,19 +67,19 @@ onMounted(() => {
       <DropdownMenuGroup>
         <DropdownMenuItem
           @click="mode = 'light'"
-          class="p-2 cursor-pointer hover:bg-secondary-foreground/10"
+          class="p-2 hover:bg-secondary-foreground/10"
         >
           Claro
         </DropdownMenuItem>
         <DropdownMenuItem
           @click="mode = 'dark'"
-          class="p-2 cursor-pointer hover:bg-secondary-foreground/10"
+          class="p-2 hover:bg-secondary-foreground/10"
         >
           Oscuro
         </DropdownMenuItem>
         <DropdownMenuItem
           @click="mode = 'auto'"
-          class="p-2 cursor-pointer hover:bg-secondary-foreground/10"
+          class="p-2 hover:bg-secondary-foreground/10"
         >
           Sistema
         </DropdownMenuItem>
@@ -90,27 +87,27 @@ onMounted(() => {
       <DropdownMenuGroup class="flex justify-between w-full p-3 bg-secondary">
         <DropdownMenuItem
           @click="toggleColorTheme('theme-rose')"
-          class="rounded-full outline-none cursor-pointer size-4 bg-rose-600 hover:ring-2 focus-visible:ring-2 ring-rose-500/50 ring-offset-1 "
+          class="rounded-full outline-none size-4 bg-rose-600 hover:ring-2 focus-visible:ring-2 ring-rose-500/50 ring-offset-1 "
           :class="colorTheme === 'theme-rose' ? ' !ring-primary/50 ring-4 !ring-offset-1': ''"
         />
         <DropdownMenuItem
           @click="toggleColorTheme('theme-blue')"
-          class="bg-blue-600 rounded-full outline-none cursor-pointer size-4 hover:ring-2 focus-visible:ring-2 ring-blue-500/50 ring-offset-1 "
+          class="bg-blue-600 rounded-full outline-none size-4 hover:ring-2 focus-visible:ring-2 ring-blue-500/50 ring-offset-1 "
           :class="colorTheme === 'theme-blue' ? ' !ring-primary/50 ring-4 !ring-offset-1': ''"
         />
         <DropdownMenuItem
           @click="toggleColorTheme('theme-green')"
-          class="bg-green-600 rounded-full outline-none cursor-pointer size-4 hover:ring-2 focus-visible:ring-2 ring-green-500/50 ring-offset-1 "
+          class="bg-green-600 rounded-full outline-none size-4 hover:ring-2 focus-visible:ring-2 ring-green-500/50 ring-offset-1 "
           :class="colorTheme === 'theme-green' ? ' !ring-primary/50 ring-4 !ring-offset-1': ''"
         />
         <DropdownMenuItem
           @click="toggleColorTheme('theme-yellow')"
-          class="bg-yellow-600 rounded-full outline-none cursor-pointer size-4 hover:ring-2 focus-visible:ring-2 ring-yellow-500/50 ring-offset-1 "
+          class="bg-yellow-600 rounded-full outline-none size-4 hover:ring-2 focus-visible:ring-2 ring-yellow-500/50 ring-offset-1 "
           :class="colorTheme === 'theme-yellow' ? ' !ring-primary/50 ring-4 !ring-offset-1': ''"
         />
         <DropdownMenuItem
           @click="toggleColorTheme('theme-violet')"
-          class="rounded-full outline-none cursor-pointer size-4 bg-violet-600 hover:ring-2 focus-visible:ring-2 ring-violet-500/50 ring-offset-1 "
+          class="rounded-full outline-none size-4 bg-violet-600 hover:ring-2 focus-visible:ring-2 ring-violet-500/50 ring-offset-1 "
           :class="colorTheme === 'theme-violet' ? ' !ring-primary/50 ring-4 !ring-offset-1': ''"
         />
       </DropdownMenuGroup>

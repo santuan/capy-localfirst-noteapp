@@ -502,4 +502,8 @@ body:has(.cursorInitial) button {
   cursor: auto !important;
 }
 
+body:has(.cursorPointer) [role="menuitem"] {
+  cursor: pointer;
+}
+
 * {  user-select: none; user-drag: none; app-region: no-drag; }
