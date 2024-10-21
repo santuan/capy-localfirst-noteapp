@@ -507,6 +507,10 @@ body:has(.cursorPointer) [role="menuitem"] {
   cursor: pointer;
 }
 
+html {
+  background-color: #020817;
+}
+
 body p,
 body label,
 body input,

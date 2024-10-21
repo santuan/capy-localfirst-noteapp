@@ -578,7 +578,7 @@ function setLink() {
 }
 
 .button-group button {
-  @apply border border-secondary focus-within:border-primary outline-none h-8 min-w-8 max-w-8 xl:max-w-14 text-sm focus-visible:border-primary hover:border-primary flex justify-center items-center duration-100;
+  @apply border border-secondary focus-within:border-primary outline-none h-8 min-w-8 max-w-8 xl:max-w-14 text-sm focus-visible:border-primary hover:!border-primary flex justify-center items-center duration-100;
   flex: 1;
 }
 

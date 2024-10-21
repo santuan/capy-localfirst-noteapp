@@ -114,9 +114,9 @@ const results = computed(() => {
         <SelectSort />
       </div>
     </div>
-    <div class="overflow-y-auto pl-1 SidebarProjects overflow-x-hidden h-[calc(100vh-11.5rem)]">
+    <div class="overflow-y-auto pl-1 SidebarProjects overflow-x-hidden h-[calc(100vh-13rem)]">
       <ScrollAreaRoot
-        class="w-full h-[calc(100vh-11.5rem)] rounded overflow-hidden"
+        class="w-full h-[calc(100vh-13rem)] rounded overflow-hidden"
         style="--scrollbar-size: 10px"
       >
         <ScrollAreaViewport class="w-full h-full rounded">
