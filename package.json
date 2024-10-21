@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "stackblitz": "npm run build && npm run preview"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.1.1",
