@@ -78,7 +78,7 @@ if(window.matchMedia("(any-hover: none)").matches) {
         class="md:data-[state=open]:animate-contentShow font-mono fixed top-6 md:top-[50%] left-[50%] max-h-[85vh] w-[98vw] max-w-[750px] translate-x-[-50%] md:translate-y-[-50%] bg-background rounded py-4 md:p-4 focus:outline-none z-[100] "
       >
         <DialogTitle class="text-foreground m-0 text-[17px] font-semibold">
-          Configuraciones - {{ isMobile }}
+          Configuraciones
         </DialogTitle>
         <DialogDescription class="mt-1 text-sm text-muted-foreground">
           Administre sus preferencias para <span>{{ isMobile ? 'touch' : 'mouse y teclado' }}.</span> 
