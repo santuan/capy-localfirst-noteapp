@@ -85,14 +85,14 @@ const results = computed(() => {
       class="relative grid grid-cols-3 w-full gap-1 px-1.5  p-0.5 text-xs bg-secondary/4 ring-secondary/60 focus-within:ring-secondary"
     >
       <div
-        class="relative flex items-center justify-between w-full h-8 col-span-2 border hover:border-primary focus-within:border-primary border-secondary"
+        class="relative flex items-center justify-between w-full bg-secondary/30 h-8 col-span-2 border hover:border-primary focus-within:border-primary border-secondary overflow-hidden"
       >
         <Search class="absolute top-0 left-0 ml-2 h-7 size-3 text-foreground/40" />
         <input
           ref="focusSearch"
           v-model="searchTerm"
           placeholder="Filtrar por título"
-          class="px-1 text-xs outline-none pl-7 h-7 bg-secondary/30 placeholder:text-xs placeholder:text-foreground/40"
+          class="px-1 text-xs outline-none pl-7 h-7 bg-transparent  placeholder:text-xs placeholder:text-foreground/40"
         >
         <span
           v-if="!searchTerm"

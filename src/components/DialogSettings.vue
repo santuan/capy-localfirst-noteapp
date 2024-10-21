@@ -13,7 +13,7 @@ import {
   ScrollAreaThumb,
   ScrollAreaViewport,
 } from "radix-vue";
-import { X, MousePointer, DatabaseZap, Pointer, PlaneTakeoff, Settings2 } from "lucide-vue-next";
+import { X, MousePointer, DatabaseZap, Pointer, Plane, Settings2 } from "lucide-vue-next";
 import Tooltip from "./ui/Tooltip.vue";
 import { useCounterStore } from "@/stores/counter";
 import { useStorage, useMagicKeys, whenever } from '@vueuse/core'
@@ -87,17 +87,17 @@ const toggleTour = () => {
                     v-auto-animate
                   >
                     <label class="text-sm font-medium ">
-                      Tour navegacion de la app
+                      Tour
                     </label>
                     <p class="text-xs text-muted-foreground">
-                      Activar el tutorial al ingresar a la app.
+                      Iniciar un recorrido por las principales funciones de la app.
                     </p>
                   </div>
                   <button
                     @click="toggleTour()"
                     class="flex focus:border-primary ring-foreground items-center justify-center border border-secondary bg-background shrink-0 hover:bg-secondary/80 size-8"
                   >
-                    <PlaneTakeoff class="size-5" />
+                    <Plane class="size-5" />
                   </button>
                 </div>
                 <div class="flex-row items-start justify-between hidden p-3 border sm:flex border-secondary">
@@ -105,7 +105,7 @@ const toggleTour = () => {
                     <label class="text-sm font-medium ">
                       Puntero del mouse </label>
                     <p class="text-xs text-muted-foreground">
-                      Activa o desactiva la manito en el cursor del mouse
+                      Activa o desactiva la manito en el cursor del mouse.
                     </p>
                   </div>
                   <button
@@ -138,7 +138,7 @@ const toggleTour = () => {
                     <label class="text-sm font-medium ">
                       Generar json exportable al iniciar la aplicación.</label>
                     <p class="text-xs text-muted-foreground">
-                      Activar la opción para exportar la base de datos localmente para backup al iniciar
+                      Activar la opción para exportar la base de datos localmente para backup al iniciar.
                     </p>
                   </div>
                   <button

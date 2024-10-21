@@ -502,6 +502,7 @@ body:has(.cursorInitial) button {
   cursor: auto !important;
 }
 
+
 body:has(.cursorPointer) [role="menuitem"] {
   cursor: pointer;
 }

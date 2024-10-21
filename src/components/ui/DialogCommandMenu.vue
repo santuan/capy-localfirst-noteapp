@@ -34,7 +34,7 @@ function handleSelect(id) {
     <Tooltip
       name="Barra comandos"
       :side="counter.showProjects ? 'bottom' : 'right'"
-      shortcut="ctrl+alt+o"
+      shortcut="ctrl + alt + o"
       :align="counter.showProjects ? 'end' : 'center'"
     >
       <DialogTrigger

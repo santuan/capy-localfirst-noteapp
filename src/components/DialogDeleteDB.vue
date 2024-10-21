@@ -59,16 +59,16 @@ onMounted(() => {
         class="data-[state=open]:animate-contentShow font-mono fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-background p-3 md:p-[25px] shadow focus:outline-none z-[9000]"
       >
         <DialogClose
-          class="text-foreground hover:bg-secondary/80 hover:text-foreground  absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center focus:outline-none"
+          class="text-foreground hover:bg-secondary/80 hover:text-foreground  absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center focus:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:text-primary"
           aria-label="Close"
         >
-          <X class="size-4" />
+          <X class="size-4 text-primary-foreground" />
         </DialogClose>
         <DialogTitle class="text-foreground m-0 text-[17px] font-semibold">
           Eliminar Base de datos local
         </DialogTitle>
         <DialogDescription class="mt-3 text-sm text-foreground">
-          Una vez que realices esta accion, no podras recuperar los datos.
+          Una vez que realices esta acción, no podrás recuperar los datos.
         </DialogDescription>
         <div
           class="flex items-center justify-end gap-3 mt-6"
@@ -82,7 +82,7 @@ onMounted(() => {
           </DialogClose>
           <button
             @click="clear()"
-            class="bg-red-600 text-white hover:bg-red-600/80 text-xs inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-semibold leading-none hover:outline-none focus:outline-none"
+            class="bg-red-600 text-white hover:bg-red-600/80 text-xs inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-semibold leading-none hover:outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             Eliminar
           </button>

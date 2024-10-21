@@ -95,7 +95,7 @@ function setLink() {
 
 
 <template>
-  <div class="flex justify-start mb-1 button-group md:w-auto">
+  <div class="flex justify-start mt-0.5 mb-2 button-group md:w-auto">
     <Tooltip
       name="Deshacer"
       side="bottom"
@@ -137,18 +137,18 @@ function setLink() {
       <DropdownMenuContent
         :side="'bottom'"
         :align="'start'"
-        class="z-50 grid w-64 grid-cols-2 text-xs gap-0.5 bg-primary border-2 border-primary"
+        class="z-50 grid w-32 text-xs gap-1 bg-background border-2 border-primary"
       >
         <DropdownMenuItem
           as-child
-          class="relative flex flex-col items-center justify-center h-32 gap-2 p-2 pr-3 bg-background hover:bg-primary"
+          class="relative flex items-center justify-start  gap-2 p-2 pr-3 bg-background outline-none focus-visible:bg-primary hover:bg-secondary-foreground/10"
         >
           <label
-            class="flex flex-col justify-center gap-2 p-2 hover:bg-primary"
+            class="flex justify-start gap-2 p-2 hover:bg-primary"
             for="img-uploader"
             id="uploader"
           >
-            <ImagePlus class="size-10" />
+            <ImagePlus class="size-4" />
             <span>Base64</span>
             <input
               id="img-uploader"
@@ -161,9 +161,9 @@ function setLink() {
         </DropdownMenuItem>
         <DropdownMenuItem
           @click="addImage"
-          class="flex flex-col items-center justify-center h-32 gap-2 p-2 cursor-pointer bg-background hover:bg-primary"
+          class="flex items-center justify-start  gap-2 p-2 bg-background outline-none focus-visible:bg-primary hover:bg-secondary-foreground/10"
         >
-          <ImageDown class="size-10" />
+          <ImageDown class="size-4" />
           Url
         </DropdownMenuItem>
         <DropdownMenuArrow />
@@ -566,7 +566,7 @@ function setLink() {
 
 
 
-<style>
+<style scoped>
 .button-group {
   @apply bg-background flex flex-wrap w-full;
 }
@@ -593,5 +593,11 @@ function setLink() {
 .button-group button svg {
   @apply size-3.5;
 }
+
+
+body:has(.cursorPointer) label {
+  cursor: pointer;
+}
+
 
 </style>

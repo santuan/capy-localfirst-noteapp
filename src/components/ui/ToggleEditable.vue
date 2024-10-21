@@ -12,7 +12,7 @@ const counter = useCounterStore();
         ? 'Cambiar a previsualizar'
         : 'Cambiar a modo editable'
     "
-    shortcut="ctrl+alt+p"
+    shortcut="ctrl + alt + p"
     :side="counter.showProjects ? 'bottom' : 'right'"
     :align="counter.showProjects ? 'end' : 'center'"
   >

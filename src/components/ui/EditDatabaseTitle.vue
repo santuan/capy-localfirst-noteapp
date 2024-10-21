@@ -39,7 +39,7 @@ onClickOutside(target, () => {
     <button
       v-if="!editing"
       @click="editDatabaseTitle()"
-      class="flex items-center justify-between w-full h-8 gap-1 pl-2 text-primary"
+      class="flex items-center justify-between w-full h-8 gap-1 pl-2 hover:outline-none hover:!ring-1 hover:ring-primary text-primary"
     >
       <span
         v-if="!file_name"
@@ -48,12 +48,12 @@ onClickOutside(target, () => {
         {{ file_name }}
       </span>
       <Tooltip
-        name="Editar nombre de la base de datos local"
-        side="top"
-        align="end"
+        name="Editar nombre de la base de datos local."
+        side="bottom"
+        :align="'end'"
       >
         <span
-          class="flex items-center justify-center duration-100 border border-transparent group-hover:border size-8 shrink-0 bg-background group-hover:border-primary"
+          class="flex items-center justify-center duration-100 border border-transparent size-8 shrink-0 bg-background "
         >
           <DatabaseZap class="size-4 text-primary" />
         </span>

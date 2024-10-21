@@ -56,7 +56,7 @@ const props = defineProps({
           >{{ props.name }}</span>
           <kbd
             v-show="props.shortcut"
-            class="pointer-events-none uppercase inline-flex h-5 select-none items-center gap-1 rounded bg-primary/20 px-1.5 font-mono text-[10px] text-secondary-foreground font-extrabold opacity-100"
+            class="pointer-events-none uppercase inline-flex h-5 select-none items-center gap-1 rounded bg-primary/20 px-1.5 font-mono text-[11px] text-secondary-foreground font-extrabold opacity-100"
           >
             {{ props.shortcut }}
           </kbd>

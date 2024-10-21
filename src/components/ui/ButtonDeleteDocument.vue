@@ -35,7 +35,7 @@ whenever(magicDeleteDocument, (n) => {
       name="Eliminar documento"
       side="top"
       :align="'end'"
-      shortcut="ctrl+shift-delete"
+      shortcut="ctrl + shift + delete"
     >
       <AlertDialogTrigger
         class="fixed bottom-0 right-0 flex items-center justify-center ml-auto text-xs ButtonDeleteDocument size-8 hover:bg-primary/30 bg-primary/10"
