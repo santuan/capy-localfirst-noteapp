@@ -132,6 +132,7 @@ const filteredOptions = computed(() =>
                 >
                   <ListboxItem
                     :value="option"
+                    style="content-visibility: auto"
                     class="w-64 flex items-center pl-9 px-3 h-8 leading-none relative text-foreground select-none outline-none data-[highlighted]:ring-primary data-[highlighted]:ring-1 focus:ring-primary focus:ring-1 data-[state=checked]:text-primary data-[disabled]:opacity-50 data-[highlighted]:bg-secondary"
                   >
                     <ListboxItemIndicator class="absolute inline-flex items-center justify-center left-2">
