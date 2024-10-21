@@ -39,7 +39,7 @@ const props = defineProps({
       class="flex hover:underline decoration-wavy hover:decoration-primary"
     >
       <span class="hidden md:inline-flex "> Ver registro de cambios </span> 
-      &nbsp;{{ lastVersion }} - Beta
+      &nbsp;{{ lastVersion }} - Alpha
     </DialogTrigger>
     <DialogPortal>
       <DialogOverlay

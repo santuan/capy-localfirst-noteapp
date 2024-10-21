@@ -62,7 +62,7 @@ whenever(magicAbout, (n) => {
               class="max-w-full p-3 mx-auto prose dark:prose-invert"
             >
               <DialogDescription class="inline-block p-3 mt-3 mb-3 text-sm leading-normal rounded text-foreground bg-primary/20">
-                Esto es una beta, no utilizar más que para realizar pruebas.
+                Esto es una alpha, no utilizar más que para realizar pruebas.
               </DialogDescription>
               <p class="mt-3 mb-5 text-sm leading-normal text-foreground !select-text">
                 Esta aplicación usa la tecnologia 
