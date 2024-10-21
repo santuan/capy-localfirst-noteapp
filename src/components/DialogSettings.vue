@@ -16,13 +16,14 @@ import {
 import { X, MousePointer, DatabaseZap, Pointer, Plane, Settings2 } from "lucide-vue-next";
 import Tooltip from "./ui/Tooltip.vue";
 import { useCounterStore } from "@/stores/counter";
-import { useStorage, useMagicKeys, whenever } from '@vueuse/core'
+import { useStorage, useMagicKeys, whenever, useMousePressed } from '@vueuse/core'
 
 import ToggleTheme from "./ui/ToggleTheme.vue";
 import { useSettingsStore } from "@/stores/settings";
 import DialogDeleteDB from "./DialogDeleteDB.vue";
 import DriverJsInit from "./Tour.ts";
 import { storeToRefs } from "pinia";
+import { onMounted, ref, watch } from "vue";
 const settings = useSettingsStore();
 
 const counter = useCounterStore();
@@ -47,6 +48,14 @@ const toggleTour = () => {
   }, 300);
 };
 
+const isMobile = ref(false)
+
+if(window.matchMedia("(any-hover: none)").matches) {
+  isMobile.value = true
+} else {
+  isMobile.value = false
+}
+
 </script>
 
 <template>
@@ -69,10 +78,10 @@ const toggleTour = () => {
         class="md:data-[state=open]:animate-contentShow font-mono fixed top-6 md:top-[50%] left-[50%] max-h-[85vh] w-[98vw] max-w-[750px] translate-x-[-50%] md:translate-y-[-50%] bg-background rounded py-4 md:p-4 focus:outline-none z-[100] "
       >
         <DialogTitle class="text-foreground m-0 text-[17px] font-semibold">
-          Configuraciones
+          Configuraciones - {{ isMobile }}
         </DialogTitle>
         <DialogDescription class="mt-1 text-sm text-muted-foreground">
-          Administra y configura tus preferencias.
+          Administre sus preferencias para <span>{{ isMobile ? 'touch' : 'mouse y teclado' }}.</span> 
         </DialogDescription>
         <ScrollAreaRoot
           class="w-full border h-[78vh] mt-6 md:h-[70vh] border-secondary"
@@ -81,7 +90,10 @@ const toggleTour = () => {
           <ScrollAreaViewport class="w-full h-full">
             <article class="max-w-full p-3 mx-auto prose dark:prose-invert">
               <div class="grid gap-3">
-                <div class="flex-row items-start justify-between hidden gap-3 p-3 border md:flex border-secondary">
+                <div
+                  v-if="!isMobile"
+                  class="flex-row items-start justify-between flex gap-3 p-3 border border-secondary"
+                >
                   <div
                     class="space-y-0.5"
                     v-auto-animate
@@ -100,7 +112,10 @@ const toggleTour = () => {
                     <Plane class="size-5" />
                   </button>
                 </div>
-                <div class="flex-row items-start justify-between hidden p-3 border sm:flex border-secondary">
+                <div
+                  v-if="!isMobile"
+                  class="flex-row items-start justify-between flex p-3 border border-secondary"
+                >
                   <div class="space-y-0.5">
                     <label class="text-sm font-medium ">
                       Puntero del mouse </label>

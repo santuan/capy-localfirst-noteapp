@@ -507,4 +507,8 @@ body:has(.cursorPointer) [role="menuitem"] {
   cursor: pointer;
 }
 
-* {  user-select: none; user-drag: none; app-region: no-drag; }
+body p,
+body label,
+body input,
+body div,
+body button  {  user-select: none; user-drag: none; app-region: no-drag; }

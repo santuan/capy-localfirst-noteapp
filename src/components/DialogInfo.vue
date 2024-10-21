@@ -54,7 +54,7 @@ whenever(magicAbout, (n) => {
           Acerca de esta app
         </DialogTitle>
         <ScrollAreaRoot
-          class="w-full border h-[78vh] mt-6 md:h-[70vh] border-secondary"
+          class="w-full border h-[78vh] mt-6 md:h-[70vh] border-secondary select-interactive"
           style="--scrollbar-size: 10px"
         >
           <ScrollAreaViewport class="w-full h-full">
@@ -64,7 +64,7 @@ whenever(magicAbout, (n) => {
               <DialogDescription class="inline-block p-3 mt-3 mb-3 text-sm leading-normal rounded text-foreground bg-primary/20">
                 Esto es una beta, no utilizar más que para realizar pruebas.
               </DialogDescription>
-              <p class="mt-3 mb-5 text-sm leading-normal text-foreground">
+              <p class="mt-3 mb-5 text-sm leading-normal text-foreground !select-text">
                 Esta aplicación usa la tecnologia 
                 <a
                   href="https://developer.mozilla.org/es/docs/Web/API/IndexedDB_API/Using_IndexedDB"
@@ -74,32 +74,32 @@ whenever(magicAbout, (n) => {
                 quedan almacenados en la sesión de ese navegador (Al limpiar los datos
                 del navegador estos se perderán).
               </p>
-              <p class="mt-2 mb-5 text-sm leading-normal text-foreground">
+              <p class="mt-2 mb-5 text-sm leading-normal text-foreground !select-text ">
                 Puede exportar e importar la
                 IndexedDB en formato JSON y asi mantener la base de datos localmente.
               </p>
-              <p class="mt-2 mb-5 text-sm leading-normal text-foreground">
+              <p class="mt-2 mb-5 text-sm leading-normal text-foreground !select-text ">
                 Tambien se utiliza localStorage para persistir:
               </p>
-              <ul class="mt-2 mb-5 text-sm leading-normal text-foreground">
+              <ul class="mt-2 mb-5 text-sm leading-normal text-foreground !select-text  ">
                 <li>El modo de color seleccionado.</li>
                 <li>Visibilidad de las opciones para formatear el texto.</li>
                 <li>Ancho del editor</li>
               </ul>
               <h4>Funcionalidades</h4>
-              <ul class="mt-2 mb-5 text-sm leading-normal text-foreground">
+              <ul class="mt-2 mb-5 text-sm leading-normal text-foreground !select-text  ">
                 <li>Se puede asignar un nombre a la base de datos.</li>
                 <li>Crear elementos con texto enriquecido.</li>
                 <li>Agrega bloques de código con resaltado de sintaxis.</li>
                 <li>Pegar directamente videos de youtube.</li>
                 <li>Imágenes</li>
-                <ul class="pl-0 mb-5 ml-5 text-sm leading-normal text-foreground">
+                <ul class="pl-0 mb-5 ml-5 text-sm leading-normal text-foreground !select-text ">
                   <li>via URL</li>
                   <li>guardadas en la DB como Base64</li>
                 </ul>
               </ul>
               <h4>Tecnologías utilizadas</h4>
-              <ul class="mt-2 mb-5 text-sm leading-normal text-foreground">
+              <ul class="mt-2 mb-5 text-sm leading-normal text-foreground !select-text  ">
                 <li>Dexie - Wrapper de IndexedDB</li>
                 <li>
                   Vue.js
