@@ -7,7 +7,7 @@ import {
   ScrollAreaViewport,
 } from "radix-vue";
 
-import { onMounted, onBeforeUnmount } from "vue";
+import { onMounted, onBeforeUnmount, ref } from "vue";
 import { useStorage } from "@vueuse/core";
 import { Editor, EditorContent, VueNodeViewRenderer } from "@tiptap/vue-3";
 import { storeToRefs } from "pinia";
@@ -31,6 +31,7 @@ import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Youtube from "@tiptap/extension-youtube";
+import Video from "./addVideo";
 import CodeBlockShiki from "tiptap-extension-code-block-shiki";
 
 import "medium-zoom/dist/style.css";
@@ -72,6 +73,7 @@ onMounted(() => {
           "data-zoomable": "",
         },
       }),
+      Video,
       Typography,
       Link.configure({
         openOnClick: true,
@@ -140,6 +142,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   editor.value.destroy();
 });
+
 </script>
 
 <template>
@@ -158,6 +161,7 @@ onBeforeUnmount(() => {
         <EditorToolbar />
       </div>
     </div>
+    
     <ScrollAreaRoot
       class="w-full border border-secondary "
       :class="[

@@ -24,6 +24,7 @@ import {
   ChevronDown,
   ImageDown,
   Globe,
+  Youtube,
 } from "lucide-vue-next";
 import {
   DropdownMenuArrow,
@@ -91,6 +92,28 @@ function setLink() {
 }
 
 
+function setVideo() {
+  console.log("Video")
+  const videoSrc = "";
+  const video = window.prompt('Video URL', videoSrc)
+
+  // cancelled
+  if (video === null) {
+    return;
+  }
+
+  // empty
+  if (video === '') {
+    editor.isActive('video') ? editor.commands.deleteSelection() : false;
+    return;
+  }
+
+  let srcCheck = video.match(/src="(?<src>.+?)"/); // get the src value from embed code if all pasted in
+  let src = srcCheck ? srcCheck.groups.src : video; // use src or if just url in input use that
+
+  editor.value.chain().focus().insertContent(`<video src="${src}"></video>`).run(); // add a new video element
+};
+
 </script>
 
 
@@ -120,6 +143,8 @@ function setLink() {
         <Redo2 class="size-4" />
       </button>
     </Tooltip>
+   
+   
 
     <DropdownMenuRoot>
       <DropdownMenuTrigger class="data-[state=open]:!bg-primary data-[state=open]:text-primary-foreground relative">
@@ -172,16 +197,25 @@ function setLink() {
     <Tooltip
       name="Agregar video Youtube"
       side="bottom"
-      :align="'end'"
     >
       <button
         @click="addVideo"
         class="flex items-center justify-center outline-none interactive size-8 focus-visible:border-primary border-secondary"
       >
+        <Youtube class="size-4" />
+      </button>
+    </Tooltip>
+    <Tooltip
+      name="Video URL"
+      side="bottom"
+    >
+      <button
+        class="flex items-center justify-center border outline-none size-8 focus-visible:border-primary border-secondary"
+        @click="setVideo()"
+      >
         <Video class="size-4" />
       </button>
     </Tooltip>
-
 
     <template v-if="showEditorToolbar">
       <DropdownMenuRoot>
