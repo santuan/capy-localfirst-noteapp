@@ -23,7 +23,7 @@ import { useSettingsStore } from "@/stores/settings";
 import DialogDeleteDB from "./DialogDeleteDB.vue";
 import DriverJsInit from "./Tour.ts";
 import { storeToRefs } from "pinia";
-import { onMounted, ref, watch } from "vue";
+import { ref } from "vue";
 const settings = useSettingsStore();
 
 const counter = useCounterStore();

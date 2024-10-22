@@ -64,7 +64,7 @@ function handleSelect(id) {
             @escape-key-down="open = false"
           >
             <ComboboxEmpty class="text-center text-muted-foreground p-4">
-              No results
+              Sin resultados
             </ComboboxEmpty>
 
             <ComboboxGroup>
