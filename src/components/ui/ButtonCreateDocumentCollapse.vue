@@ -26,16 +26,12 @@ function new_document() {
     @click="loaded_id === '' ? null : new_document()"
     class="CreateNewButton flex items-center justify-center gap-2 text-xs size-8 w-full text-left bg-primary focus-within:ring-1 ring-primary"
     :class="{
-      '!bg-secondary !ring-secondary ': loaded_id === null,
+      '!bg-secondary !ring-secondary !text-primary-foreground': loaded_id === null,
       '!bg-secondary/30 !text-primary ': loaded_id === '',
     }"
   >
     <Plus
-      class="size-4 "
-      :class="{
-        '!bg-secondary !ring-secondary text-primary-foreground': loaded_id === null,
-        '!bg-secondary/30 !text-primary ': loaded_id === '',
-      }"
+      class="size-4"
     />
   </button>
 </template>
