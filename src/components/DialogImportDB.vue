@@ -73,7 +73,7 @@ function onDrop(files) {
     </AlertDialogTrigger>
     <AlertDialogPortal>
       <AlertDialogOverlay
-        class="bg-secondary/30 data-[state=open]:animate-overlayShow fixed inset-0 z-[70]"
+        class="bg-secondary/90 data-[state=open]:animate-overlayShow fixed inset-0 z-[70]"
       />
       <AlertDialogContent>
         <div

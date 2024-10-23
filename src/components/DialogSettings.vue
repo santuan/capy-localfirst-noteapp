@@ -154,7 +154,7 @@ if(window.matchMedia("(any-hover: none)").matches) {
                     <label class="text-sm font-medium ">
                       Exportar al iniciar.</label>
                     <p class="text-xs text-muted-foreground">
-                      Activa la opción para exportar la base de datos localmente para backup al iniciar.
+                      Cuando la opcion está activada opción aparecerá la posibilidad de exportar la DB al iniciar la aplicación.
                     </p>
                   </div>
                   <button
@@ -168,10 +168,9 @@ if(window.matchMedia("(any-hover: none)").matches) {
 
                 <div class="flex flex-row items-start justify-between gap-3 pt-2 p-3 border border-secondary">
                   <div class="space-y-0.5">
-                    <label class="text-sm font-medium ">
-                      Iniciar vacio o con contenido.</label>
+                    <label class="text-sm font-medium ">Iniciar DB</label>
                     <p class="text-xs text-muted-foreground">
-                      Al activar esta opción luego de eliminar la base no se creara un documento de ejemplo.
+                      Cuando la opción está activada la base se inicia con un documento de ejemplo
                     </p>
                   </div>
                   <button
