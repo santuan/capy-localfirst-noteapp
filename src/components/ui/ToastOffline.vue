@@ -16,11 +16,11 @@ async function close() {
     role="alert"
   >
     <div class="message">
-      <!-- <span v-if="offlineReady">
+      <span v-if="offlineReady">
         Aplicación lista para trabajar sin conexión
-      </span> -->
+      </span>
       <div
-        v-if="needRefresh"
+        v-else
         class="grid gap-3 mb-3"
       >
         <h4 class="font-bold">
@@ -31,11 +31,9 @@ async function close() {
         </p>
       </div>
     </div>
-    <div
-      v-if="needRefresh"
-      class="grid grid-cols-2 gap-2"
-    >
+    <div class="grid grid-cols-2 gap-2">
       <button
+        v-if="needRefresh"
         @click="updateServiceWorker()"
       >
         Recargar
