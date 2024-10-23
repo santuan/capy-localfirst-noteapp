@@ -1,11 +1,26 @@
 <script setup>
-import { shallowRef } from "vue";
+import { shallowRef, watch } from "vue";
 import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "radix-vue";
 import { ArrowRightToLine } from "lucide-vue-next";
 import Tooltip from "@/components/ui/Tooltip.vue";
-
+import { useKeyModifier } from '@vueuse/core'
+import { useCounterStore } from "@/stores/counter";
 const panelRef = shallowRef()
 const layout = shallowRef(0)
+
+const ExpandAll = useKeyModifier('Control', { events: ['mouseup', 'mousedown'] })
+const counter = useCounterStore();
+
+function expandAllScreen() {
+  if (panelRef.value.isCollapsed) {
+    panelRef.value.expand()
+  } else {
+    panelRef.value.collapse()
+  }
+  if (ExpandAll.value === true) {
+    counter.showProjects = !counter.showProjects
+  }
+}
 
 </script>
 
@@ -28,10 +43,11 @@ const layout = shallowRef(0)
       <Tooltip
         :name="panelRef?.isCollapsed ? 'Contraer' : 'Expandir'"
         :side="panelRef?.isCollapsed ? 'left' : 'right'"
+        shortcut="Presionar ctrl colapsa el menú"
       >
         <button
           class="z-20 flex items-center justify-center bg-background size-6"
-          @click="panelRef?.isCollapsed ? panelRef?.expand() : panelRef?.collapse()"
+          @click="expandAllScreen"
           @keyup.enter="panelRef?.isCollapsed ? panelRef?.expand() : panelRef?.collapse()"
           :class="panelRef?.isCollapsed ? 'rotate-180' : ''"
         >

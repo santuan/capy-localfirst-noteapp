@@ -48,7 +48,7 @@ function DriverJsInit() {
         element: '.EditorCK',
         popover: {
           title: 'Editor de texto',
-          description: 'Aquí podrás añadir texto enriquecido, imágenes y videos desde una url así como tambien videos de YouTube.',
+          description: 'Aquí podrás añadir texto enriquecido, imágenes y videos desde una url así como también videos de YouTube.',
           side: 'left',
           align: 'center'
         }
@@ -85,7 +85,7 @@ function DriverJsInit() {
         element: '.ToggleEditable',
         popover: {
           title: 'Vista previa',
-          description: 'Alterna entre la vista de edición y la vista previa del documento. Las imágenes pueden agrandarce en el modo vista previa. Los videos desde url solo se pueden reproducir en este modo (por ahora)',
+          description: 'Alterna entre la vista de edición y la vista previa del documento. Las imágenes pueden agrandarse en el modo vista previa. Los videos desde url solo se pueden reproducir en este modo (por ahora)',
           side: 'bottom',
           align: 'center'
         }
@@ -103,7 +103,7 @@ function DriverJsInit() {
         element: '.ButtonDeleteDocument',
         popover: {
           title: 'Eliminar documento',
-          description: 'Si así lo deseas tambien puedes eliminar el documento directamente.',
+          description: 'Si así lo deseas también puedes eliminar el documento directamente.',
           side: 'top',
           align: 'center'
         }
