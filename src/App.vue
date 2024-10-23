@@ -9,7 +9,7 @@ const cursorPointer = useStorage("cursor", true);
 
 <template>
   <div :class="cursorPointer ? 'cursorPointer' : 'cursorInitial'">
-    <main class="AppContainer">
+    <main class="AppContainer ">
       <RouterView />
     </main>
     <ToastOffline />
