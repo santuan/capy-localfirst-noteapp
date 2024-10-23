@@ -511,8 +511,10 @@ html {
   background-color: #020817;
 }
 
-body p,
-body label,
-body input,
-body div,
-body button  {  user-select: none; user-drag: none; app-region: no-drag; }
+@media (width >= 550px) {
+  body p,
+  body label,
+  body input,
+  body div,
+  body button  {  user-select: none; user-drag: none; app-region: no-drag; }
+}

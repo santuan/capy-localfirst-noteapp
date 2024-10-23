@@ -1,5 +1,5 @@
 <script setup>
-import { Upload, X, DatabaseZap } from "lucide-vue-next";
+import { Download, X, DatabaseZap } from "lucide-vue-next";
 import {
   AlertDialogCancel,
   AlertDialogContent,
@@ -68,12 +68,12 @@ function onDrop(files) {
     <AlertDialogTrigger
       class="flex items-center justify-center h-12 gap-2 px-2 text-xs border outline-none border-secondary bg-background hover:bg-background/50 focus-visible:border-primary focus-visible:bg-primary/10"
     >
-      <Upload class="size-4" />
+      <Download class="size-4" />
       <span class="">ImportarDB</span>
     </AlertDialogTrigger>
     <AlertDialogPortal>
       <AlertDialogOverlay
-        class="bg-secondary/80 data-[state=open]:animate-overlayShow fixed inset-0 z-[70]"
+        class="bg-secondary/30 data-[state=open]:animate-overlayShow fixed inset-0 z-[70]"
       />
       <AlertDialogContent>
         <div
@@ -84,7 +84,7 @@ function onDrop(files) {
             v-auto-animate
           >
             <div
-              class="relative flex flex-col items-center justify-center w-full max-w-xl gap-2 px-3 pt-10 pb-6 text-center shadow bg-background text-pretty"
+              class="fixed inset-0 flex flex-col items-center justify-center w-full gap-2 px-3 pt-10 pb-6 text-center shadow bg-background/60 text-pretty"
               ref="dropZoneRef"
               :class="isOverDropZone ? ' border-animated ' : '   '"
             >

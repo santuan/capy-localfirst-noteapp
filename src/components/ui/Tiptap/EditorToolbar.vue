@@ -118,7 +118,7 @@ function setVideo() {
 
 
 <template>
-  <div class="flex justify-start mt-0.5 mb-2 button-group md:w-auto">
+  <div class="flex justify-start select-none mt-0.5 mb-2 button-group md:w-auto">
     <Tooltip
       name="Deshacer"
       side="bottom"

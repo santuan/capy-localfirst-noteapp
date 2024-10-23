@@ -20,7 +20,7 @@ watch(isOverDropZone, (v) => {
   <div>
     <header
       ref="dropZoneRef"
-      class="fixed top-0 z-50 flex flex-col justify-start h-screen border-r lg:sticky bg-background border-secondary"
+      class="fixed top-0 z-50 !select-none flex flex-col justify-start h-screen border-r lg:sticky bg-background border-secondary"
       :class="counter.showProjects ? 'min-w-80 max-w-80' : ' '"
     >
       <SidebarTop />

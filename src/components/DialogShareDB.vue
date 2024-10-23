@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "radix-vue";
-import { Download, X } from "lucide-vue-next";
+import { Upload, X } from "lucide-vue-next";
 import { onMounted, shallowRef, watch } from "vue";
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
@@ -46,7 +46,7 @@ onMounted(() => {
       class="flex items-center justify-center h-12 gap-2 px-2 text-xs border outline-none border-secondary bg-background hover:bg-background/50 focus-visible:border-primary focus-visible:bg-primary/10"
       aria-label="Update dimensions"
     >
-      <Download class="size-4" />
+      <Upload class="size-4" />
       <span class="">ExportarDB</span>
     </DialogTrigger>
     <DialogPortal>
@@ -54,9 +54,10 @@ onMounted(() => {
         class="bg-secondary/90 data-[state=open]:animate-overlayShow fixed inset-0 z-[200]"
       />
       <DialogContent
-        class="data-[state=open]:animate-contentShow font-mono fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[650px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-background p-3 md:p-[25px] shadow focus:outline-none z-[9000]"
+        class="data-[state=open]:animate-contentShow font-mono fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[500px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-background p-3 md:p-[25px] shadow focus:outline-none z-[9000]"
       >
-        <DialogTitle class="text-foreground m-0 text-[17px] font-semibold">
+        <DialogTitle class="text-foreground flex items-center justify-start gap-3 m-0 text-[17px] font-semibold">
+          <Upload class="size-4" />
           ExportarDB
         </DialogTitle>
         <DialogDescription class="mt-3 text-sm text-foreground">
@@ -69,7 +70,7 @@ onMounted(() => {
             v-model="input"
           >
           <button
-            class="px-5 ml-auto text-xs font-medium border bg-primary border-secondary shrink-0 text-primary-foreground hover:bg-primary/80 focus:outline-none"
+            class="ml-auto text-xs font-medium border bg-primary h-8 border-secondary shrink-0 text-primary-foreground hover:bg-primary/80 focus:outline-none px-[15px] focus-visible:ring-2 focus-visible:ring-white"
             @click="counter.export_database(input.value)"
           >
             Exportar DB
@@ -80,7 +81,7 @@ onMounted(() => {
         >
           <DialogClose as-child>
             <button
-              class="bg-secondary text-foreground hover:bg-backgorund/80 text-xs inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-semibold leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
+              class="bg-secondary text-foreground hover:bg-backgorund/80 text-xs inline-flex h-[35px] items-center justify-center rounded px-[15px] font-semibold leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
             >
               Cerrar ventana
             </button>

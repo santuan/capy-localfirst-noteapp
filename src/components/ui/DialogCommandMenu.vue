@@ -7,11 +7,10 @@ import Tooltip from "./Tooltip.vue";
 
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
-import { Search } from 'lucide-vue-next';
-import SearchItem from '../SearchItem.vue';
+import { Search, X } from 'lucide-vue-next';
+
 const counter = useCounterStore();
-const { allItemsTodo, } =
-  storeToRefs(counter);
+const { allItemsTodo, } = storeToRefs(counter);
 const open = ref(false)
 
 const keys = useMagicKeys();
@@ -25,6 +24,10 @@ whenever(magicCommandMenu, (n) => {
 function handleSelect(id) {
   open.value = false
   counter.set_project(id);
+}
+
+function close() {
+  open.value = false
 }
 
 </script>
@@ -56,7 +59,7 @@ function handleSelect(id) {
         <ComboboxRoot :open="true">
           <ComboboxInput
             placeholder="Buscar..."
-            class="sticky top-0 right-0 font-mono bg-background border-b border-secondary w-full px-4 py-3 text-foreground outline-none placeholder-muted-foreground"
+            class="sticky top-0 right-0 font-mono bg-background border-b border-secondary w-full px-4 py-3 text-foreground outline-none placeholder-muted-foreground !select-all"
             @keydown.enter.prevent
           />
           <ComboboxContent
@@ -84,6 +87,12 @@ function handleSelect(id) {
             </ComboboxGroup>
           </ComboboxContent>
         </ComboboxRoot>
+        <button
+          @click="close"
+          class="absolute top-0 size-6 flex justify-center items-center m-3 right-0 z-[999] text-foreground"
+        >
+          <X class="size-4" />
+        </button>
       </DialogContent>
     </DialogPortal>
   </DialogRoot>
