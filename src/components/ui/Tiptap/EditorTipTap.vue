@@ -325,7 +325,7 @@ html.dark .shiki span {
 
 .tiptap td,
 .tiptap th {
-  border: 1px solid var(--gray-3);
+  @apply border border-muted;
   box-sizing: border-box;
   min-width: 1em;
   padding: 6px 8px;
