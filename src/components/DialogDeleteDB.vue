@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "radix-vue";
-import { BookOpenCheck, Trash, X } from "lucide-vue-next";
+import { X } from "lucide-vue-next";
 import { onMounted, shallowRef, watch } from "vue";
 import { useCounterStore } from "@/stores/counter";
 const counter = useCounterStore();

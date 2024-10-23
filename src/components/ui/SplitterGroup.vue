@@ -1,5 +1,5 @@
 <script setup>
-import { shallowRef, watch } from "vue";
+import { shallowRef } from "vue";
 import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "radix-vue";
 import { ArrowRightToLine } from "lucide-vue-next";
 import Tooltip from "@/components/ui/Tooltip.vue";

@@ -471,11 +471,11 @@
 
 
 [data-sonner-toast] {
-  @apply !items-start !gap-3
+  @apply !items-start !gap-3 font-mono text-xs
 }
 
 [data-sonner-toast] [data-button] {
-    @apply !bg-primary
+    @apply !bg-primary !text-primary-foreground
 }
 
 [data-sonner-toast][data-styled=true] {

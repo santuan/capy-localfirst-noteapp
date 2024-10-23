@@ -93,7 +93,6 @@ function setLink() {
 
 
 function setVideo() {
-  console.log("Video")
   const videoSrc = "";
   const video = window.prompt('Video URL', videoSrc)
 
