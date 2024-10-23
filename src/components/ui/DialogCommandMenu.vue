@@ -10,7 +10,7 @@ import { storeToRefs } from "pinia";
 import { Search, X } from 'lucide-vue-next';
 
 const counter = useCounterStore();
-const { allItemsTodo, } = storeToRefs(counter);
+const { allItemsTodo } = storeToRefs(counter);
 const open = ref(false)
 
 const keys = useMagicKeys();

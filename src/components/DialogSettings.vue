@@ -13,7 +13,7 @@ import {
   ScrollAreaThumb,
   ScrollAreaViewport,
 } from "radix-vue";
-import { X, MousePointer, DatabaseZap, Pointer, Plane, Settings2 } from "lucide-vue-next";
+import { X, MousePointer, DatabaseZap, Pointer, Plane, Settings2, BookOpenCheck, BookOpen } from "lucide-vue-next";
 import Tooltip from "./ui/Tooltip.vue";
 import { useCounterStore } from "@/stores/counter";
 import { useStorage, useMagicKeys, whenever, useMousePressed } from '@vueuse/core'
@@ -30,7 +30,7 @@ const counter = useCounterStore();
 const cursorPointer = useStorage("cursor", true);
 const keys = useMagicKeys();
 const magicSettings = keys["ctrl+alt+w"];
-const { showSettings } = storeToRefs(counter);
+const { showSettings, content_editable } = storeToRefs(counter);
 const toggleCursor = () => {
   cursorPointer.value = !cursorPointer.value;
 };
@@ -42,7 +42,8 @@ whenever(magicSettings, (n) => {
 
 const toggleTour = () => {
   localStorage.setItem('product_tour_seen', 'false');
-  showSettings.value = false
+  showSettings.value = false;
+  content_editable.value = true;
   setTimeout(() => {
     DriverJsInit();
   }, 300);
@@ -77,10 +78,10 @@ if(window.matchMedia("(any-hover: none)").matches) {
       <DialogContent
         class="md:data-[state=open]:animate-contentShow font-mono fixed top-6 md:top-[50%] left-[50%] max-h-[85vh] w-[98vw] max-w-[750px] translate-x-[-50%] md:translate-y-[-50%] bg-background rounded py-4 md:p-4 focus:outline-none z-[100] "
       >
-        <DialogTitle class="text-foreground m-0 text-[17px] font-semibold">
+        <DialogTitle class="text-foreground px-3 md:px-0 m-0 text-[17px] font-semibold">
           Configuraciones
         </DialogTitle>
-        <DialogDescription class="mt-1 text-sm text-muted-foreground">
+        <DialogDescription class="mt-1 text-sm px-3 md:px-0 text-muted-foreground">
           Administre sus preferencias para <span>{{ isMobile ? 'touch' : 'mouse y teclado' }}.</span> 
         </DialogDescription>
         <ScrollAreaRoot
@@ -89,10 +90,10 @@ if(window.matchMedia("(any-hover: none)").matches) {
         >
           <ScrollAreaViewport class="w-full h-full">
             <article class="max-w-full p-3 mx-auto prose dark:prose-invert">
-              <div class="grid gap-3">
+              <div class="grid gap-2">
                 <div
                   v-if="!isMobile"
-                  class="flex-row items-start justify-between flex gap-3 p-3 border border-secondary"
+                  class="flex-row items-start justify-between flex gap-3 pt-2 p-3 border border-secondary"
                 >
                   <div
                     class="space-y-0.5"
@@ -148,12 +149,12 @@ if(window.matchMedia("(any-hover: none)").matches) {
                   <ToggleTheme />
                 </div>
 
-                <div class="flex flex-row items-start justify-between gap-3 p-3 border border-secondary">
+                <div class="flex flex-row items-start justify-between gap-3 pt-2 p-3 border border-secondary">
                   <div class="space-y-0.5">
                     <label class="text-sm font-medium ">
-                      Generar json exportable al iniciar la aplicación.</label>
+                      Exportar al iniciar.</label>
                     <p class="text-xs text-muted-foreground">
-                      Activar la opción para exportar la base de datos localmente para backup al iniciar.
+                      Activa la opción para exportar la base de datos localmente para backup al iniciar.
                     </p>
                   </div>
                   <button
@@ -164,12 +165,38 @@ if(window.matchMedia("(any-hover: none)").matches) {
                     <DatabaseZap class="size-5" />
                   </button>
                 </div>
-                <h4 class="mt-3 mb-0 text-red-600">
+
+                <div class="flex flex-row items-start justify-between gap-3 pt-2 p-3 border border-secondary">
+                  <div class="space-y-0.5">
+                    <label class="text-sm font-medium ">
+                      Iniciar vacio o con contenido.</label>
+                    <p class="text-xs text-muted-foreground">
+                      Al activar esta opción luego de eliminar la base no se creara un documento de ejemplo.
+                    </p>
+                  </div>
+                  <button
+                    @click="settings.toggle_init_empty()"
+                    class="flex focus:border-primary ring-foreground items-center justify-center border border-secondary bg-background shrink-0 hover:bg-secondary/80 size-8"
+                    :class="settings.init_empty ? 'hover:!bg-primary bg-primary hover:text-primary-foreground text-primary-foreground' : 'text-muted-foreground'"
+                  >
+                    <BookOpenCheck
+                      v-if="settings.init_empty"
+                      class="size-5"
+                    />
+                    <BookOpen
+                      v-else
+                      class="size-5"
+                    />
+                  </button>
+                </div>
+
+              
+                <h4 class="mt-2 mb-0 text-xs text-red-600">
                   Atención!
                 </h4>
-                <div class="flex flex-row items-center justify-between gap-3 p-3 border border-red-600">
+                <div class="flex flex-row items-center justify-between gap-3 p-3 border border-destructive">
                   <label
-                    class="text-sm font-medium text-red-600 "
+                    class="text-sm font-medium text-muted-foreground"
                   >
                     Eliminar la base de datos </label>
                   <DialogDeleteDB />

@@ -9,13 +9,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "radix-vue";
-import { Trash, X } from "lucide-vue-next";
+import { BookOpenCheck, Trash, X } from "lucide-vue-next";
 import { onMounted, shallowRef, watch } from "vue";
 import { useCounterStore } from "@/stores/counter";
 const counter = useCounterStore();
 import { storeToRefs } from "pinia";
 import {  refDebounced } from "@vueuse/core";
 import { toast } from 'vue-sonner'
+
 
 
 const { file_name, showSettings } = storeToRefs(counter);
@@ -45,11 +46,10 @@ onMounted(() => {
 <template>
   <DialogRoot v-model:open="showDeleteModal">
     <DialogTrigger
-      class="flex items-center justify-center gap-2 text-white bg-red-600 border border-red-600 size-8 hover:border-red-800 focus:border-4 outline-red-400 !outline-offset-2"
-      aria-label="Update dimensions"
+      class="bg-destructive  text-white hover:bg-red-800  outline-none inline-flex ring-0  hover:ring-2 ring-destructive h-8 items-center justify-center rounded-[4px] px-3 text-xs font-semibold leading-none focus:outline-none gap-2 focus-visible:ring-2 focus-visible:ring-white"
+      aria-label="Delete DB"
     >
-      <Trash class="size-4" />
-      <span class="sr-only">Eliminar DB</span>
+      Eliminar DB
     </DialogTrigger>
     <DialogPortal>
       <DialogOverlay
