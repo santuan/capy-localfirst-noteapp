@@ -51,3 +51,8 @@
 .driver-popover.driverjs-theme .driver-popover-arrow-side-bottom.driver-popover-arrow {
   border-bottom-color: hsl(var(--secondary));
 }
+
+.driver-active .SidebarBottom *,
+.driver-active .ButtonDeleteDocument.driver-active-element {
+  pointer-events: none !important;
+}

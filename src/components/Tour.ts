@@ -10,6 +10,8 @@ function DriverJsInit() {
   const driverObj = driver({
     allowClose: true,
     animate: false,
+    stagePadding: 1,
+    stageRadius: 2,
     nextBtnText: 'Siguiente',
     prevBtnText: 'Anterior',
     doneBtnText: 'Comenzar',
@@ -20,7 +22,7 @@ function DriverJsInit() {
       {
         popover: {
           title: 'Holis 👋',
-          description: 'Vamos a crear un nuevo documento que se guardara localmente en tu navegador. Podés navegar este tutorial con utilizando las flechas del teclado.',
+          description: 'Este tutorial se puede navegar utilizando las flechas del teclado. Puede repetirlo desde la configuración.',
         }
       },
       // {
@@ -37,7 +39,7 @@ function DriverJsInit() {
         element: '.create_project',
         popover: {
           title: 'Título del documento',
-          description: 'Escribi en el campo de texto un título para poder reconocerlo. Una vez realizado hacer click en siguiente',
+          description: 'Podes editar este campo de texto a gusto con el nombre que prefieras para luego identificarlo.',
           side: 'bottom',
           align: 'center'
         },
@@ -46,24 +48,34 @@ function DriverJsInit() {
         element: '.EditorCK',
         popover: {
           title: 'Editor de texto',
-          description: 'Aquí podrás añadir texto enriquecido, bloques de código bonitos para 295 lenguajes, imágenes y videos de YouTube.',
+          description: 'Aquí podrás añadir texto enriquecido, imágenes y videos desde una url así como tambien videos de YouTube.',
           side: 'left',
           align: 'center'
         }
       },
       {
-        element: '.GuardarDocumento',
+        element: '.prose div.code-block.group:nth-of-type(1)',
         popover: {
-          title: 'Agregar documento',
-          description: 'Para crear un documento se requiere minimamente un titulo. Hace click en Guardar para agregar el documento en la DB. Una vez creado el documento los cambios se guardarán automaticamente.',
+          title: 'Shiki para resaltar el código',
+          description: 'Gracias a esto se pueden agregar bloques de código bonitos para 295 lenguajes.',
           side: 'top',
-          align: 'center'
+          align: 'start'
         }
       },
+      
+      // {
+      //   element: '.GuardarDocumento',
+      //   popover: {
+      //     title: 'Agregar documento',
+      //     description: 'Para crear un documento se requiere minimamente un titulo. Hace click en Guardar para agregar el documento en la DB. Una vez creado el documento los cambios se guardarán automaticamente.',
+      //     side: 'top',
+      //     align: 'center'
+      //   }
+      // },
       {
         element: '.SidebarProjects',
         popover: {
-          title: 'Documento creado',
+          title: 'Documento creados',
           description: 'Aquí se irán guardando los documentos en tu indexdedDB. Podes fijarlos o marcarlos como completados',
           side: 'bottom',
           align: 'center'
@@ -73,7 +85,7 @@ function DriverJsInit() {
         element: '.ToggleEditable',
         popover: {
           title: 'Vista previa',
-          description: 'Alterna entre la vista de edición y la vista previa del documento.',
+          description: 'Alterna entre la vista de edición y la vista previa del documento. Las imágenes pueden agrandarce en el modo vista previa. Los videos desde url solo se pueden reproducir en este modo (por ahora)',
           side: 'bottom',
           align: 'center'
         }

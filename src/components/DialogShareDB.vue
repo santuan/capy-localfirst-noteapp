@@ -57,7 +57,7 @@ onMounted(() => {
         class="data-[state=open]:animate-contentShow font-mono fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[500px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-background p-3 md:p-[25px] shadow focus:outline-none z-[9000]"
       >
         <DialogTitle class="text-foreground flex items-center justify-start gap-3 m-0 text-[17px] font-semibold">
-          <Upload class="size-4" />
+          <Upload class="size-5" />
           ExportarDB
         </DialogTitle>
         <DialogDescription class="mt-3 text-sm text-foreground">
@@ -76,7 +76,7 @@ onMounted(() => {
             Exportar DB
           </button>
         </div>
-        <div
+        <!-- <div
           class="flex items-center justify-end mt-6"
         >
           <DialogClose as-child>
@@ -86,7 +86,7 @@ onMounted(() => {
               Cerrar ventana
             </button>
           </DialogClose>
-        </div>
+        </div> -->
         <DialogClose class="absolute top-0 size-6 flex justify-center items-center m-3 right-0 z-[999] text-foreground">
           <X class="size-4" />
         </DialogClose>

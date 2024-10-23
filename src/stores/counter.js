@@ -97,7 +97,6 @@ export const useCounterStore = defineStore("counter", () => {
           fixed: !isFixed
         },
       });
-      // toast(isFixed ? `"${item.project_data.name}" se ha desfijado` : `"${item.project_data.name}" se ha fijado`);
     } catch (error) {
       handleError("Error al marcar el proyecto", error);
     }
@@ -210,6 +209,30 @@ export const useCounterStore = defineStore("counter", () => {
           date: new Date().toISOString(),
           name: file_name.value,
         });
+
+        // Crear el primer proyecto
+        const initialProjectData = {
+          body: '<h1>¡Bienvenido a DevNote!</h1><p>Esta es una aplicación para tomar notas con texto enriquecido que se guardan localmente en tu navegador.</p><p>Algunas características:</p><ul><li><p>Texto enriquecido con múltiples opciones de formato</p></li><li><p>Soporte para bloques de código con resaltado de sintaxis</p></li><li><p>Imágenes y videos de YouTube</p></li><li><p>Exportación e importación de la base de datos</p></li></ul><pre spellcheck=\"false\"><code class=\"language-ts\">// javascript\nasync function toggle() {\n   console.log(\"Log\")\n}</code></pre><pre spellcheck=\"false\"><code class=\"language-css\">/* CSS */\n.class {\n   min-height: 80vh\n}</code></pre><pre spellcheck=\"false\"><code class=\"language-php\">/* php */\n&lt;?{ if } &gt;</code></pre><pre spellcheck=\"false\"><code class=\"language-html\">&lt;!-- html --&gt;\n&lt;div&gt;\n    &lt;button class=\"btn red\" disabled&gt;\n        Click Me!\n    &lt;/button&gt;\n    &lt;img id=\"loading\" class=\"loading\" src=\"/spinner.gif\"/&gt;\n&lt;/div&gt;</code></pre><pre spellcheck=\"false\"><code class=\"language-python\">## Python\nfrom PyPDF2 import PdfReader\n\ndef verificar(hash):\n    input = PdfReader(hash)</code></pre><pre spellcheck=\"false\"><code class=\"language-bash\">Module \"path\" has been externalized for browser compatibility.</code></pre><pre spellcheck=\"false\"><code class=\"language-csv\">Index,Organization Id,Name,Website,Country,Description,Founded,Industry,Number of employees\n1,FAB0d41d5b5d22c,Ferrell LLC,https://price.net/,Papua New Guinea,Horizontal empowering knowledgebase,1990,Plastics,3498\n2,6A7EdDEA9FaDC52,\"Mckinney, Riley and Day\",http://www.hall-buchanan.info/,Finland,User-centric system-worthy leverage,2015,Glass / Ceramics / Concrete,4952\n3,0bFED1ADAE4bcC1,Hester Ltd,http://sullivan-reed.com/,China,Switchable scalable moratorium,1971,Public Safety,5287\n4,2bFC1Be8a4ce42f,Holder-Sellers,https://becker.com/,Turkmenistan,De-engineered systemic artificial intelligence,2004,Automotive,921\n5,9eE8A6a4Eb96C24,Mayer Group,http://www.brewer.com/,Mauritius,Synchronized needs-based challenge,1991,Transportation,7870\n6,cC757116fe1C085,Henry-Thompson,http://morse.net/,Bahamas,Face-to-face well-modulated customer loyalty,1992,Primary / Secondary Education,4914\n7,219233e8aFF1BC3,Hansen-Everett,https://www.kidd.org/,Pakistan,Seamless disintermediate collaboration,2018,Publishing Industry,7832\n8,ccc93DCF81a31CD,Mcintosh-Mora,https://www.brooks.com/,Heard Island and McDonald Islands,Centralized attitude-oriented capability,1970,Import / Export,4389\n9,0B4F93aA06ED03e,Carr Inc,http://ross.com/,Kuwait,Distributed impactful customer loyalty,1996,Plastics,8167</code></pre><p></p><pre spellcheck=\"false\"><code class=\"language-cobol\">*&gt; spaces are only trailing.)\n    display \"(plain) Enter a value: \" with no advancing\n    accept ws-user-input\n\n    if ws-user-input is numeric then\n        display ws-user-input \" is numeric!\"\n    else\n        display ws-user-input \" is not numeric.\"\n    end-if\n\n    exit paragraph.</code></pre><pre spellcheck=\"false\"><code class=\"language-dockerfile\">FROM node:22\nWORKDIR /app\nCOPY package.json\nRUN npm install\nCOPY . .\nEXPOSE 8000\nCMD [ \"npm\", \"run\", \"dev\" ]</code></pre><p></p>',
+          name: "Introducción a DevNote",
+          checked: false,
+          fixed: false,
+        };
+
+        status.value = "CHANGING";
+        const new_project_id = await db.projects.add({
+          date: new Date().toISOString(),
+          date_created: new Date().toISOString(),
+          project_data: initialProjectData,
+        });
+
+        // Cargar el proyecto en el editor
+        project_body.value = initialProjectData.body;
+        project_name.value = initialProjectData.name;
+        project_fixed.value = initialProjectData.fixed;
+        project_checked.value = initialProjectData.checked;
+        loaded_id.value = new_project_id;
+        status.value = "READY";
+
       } else if (count === 1) {
         const selectedState = await db.file.get(1);
         if (selectedState) file_name.value = selectedState.name;
