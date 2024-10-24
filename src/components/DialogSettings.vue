@@ -168,7 +168,7 @@ if(window.matchMedia("(any-hover: none)").matches) {
 
                 <div class="flex flex-row items-start justify-between gap-3 pt-2 p-3 border border-secondary">
                   <div class="space-y-0.5">
-                    <label class="text-sm font-medium ">Iniciar DB</label>
+                    <label class="text-sm font-medium ">Iniciar DB con info</label>
                     <p class="text-xs text-muted-foreground">
                       Cuando la opción está activada la base se inicia con un documento de ejemplo
                     </p>

@@ -20,7 +20,7 @@ watch(isOverDropZone, (v) => {
   <div>
     <header
       ref="dropZoneRef"
-      class="fixed top-0 z-50 !select-none flex flex-col justify-start h-screen border-r lg:sticky bg-background border-secondary"
+      class="fixed top-0 z-[60] !select-none flex flex-col justify-start h-screen border-r lg:sticky bg-background border-secondary"
       :class="counter.showProjects ? 'min-w-80 max-w-80' : ' '"
     >
       <SidebarTop />
@@ -30,7 +30,7 @@ watch(isOverDropZone, (v) => {
     <button
       v-show="counter.showProjects"
       @click="counter.showProjects = !counter.showProjects"
-      class="fixed inset-0 !z-40 bg-background/90 !border-0 !ring-0 !outline-none lg:hidden"
+      class="fixed inset-0 !z-50 bg-background/90 !border-0 !ring-0 !outline-none lg:hidden"
     />
   </div>
 </template>
