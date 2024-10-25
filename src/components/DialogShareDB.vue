@@ -14,6 +14,7 @@ import { onMounted, shallowRef, watch } from "vue";
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
 import {  refDebounced, useMagicKeys, whenever } from "@vueuse/core";
+import Tooltip from "./ui/Tooltip.vue";
 
 const keys = useMagicKeys();
 const magicShareDB = keys["ctrl+alt+e"];
@@ -42,13 +43,18 @@ onMounted(() => {
 
 <template>
   <DialogRoot v-model:open="showShareModal">
-    <DialogTrigger
-      class="flex items-center justify-center h-12 gap-2 px-2 text-xs border outline-none border-secondary bg-background hover:bg-background/50 focus-visible:border-primary focus-visible:bg-primary/10"
-      aria-label="Update dimensions"
+    <Tooltip
+      shortcut="ctrl+alt+e"
+      side="top"
     >
-      <Upload class="size-4" />
-      <span class="">ExportarDB</span>
-    </DialogTrigger>
+      <DialogTrigger
+        class="flex items-center justify-center h-12 gap-2 px-2 text-xs border outline-none border-secondary bg-background hover:bg-background/50 focus-visible:border-primary focus-visible:bg-primary/10"
+        aria-label="Update dimensions"
+      >
+        <Upload class="size-4" />
+        <span class="">ExportarDB</span>
+      </DialogTrigger>
+    </Tooltip>
     <DialogPortal>
       <DialogOverlay
         class="bg-secondary/90 data-[state=open]:animate-overlayShow fixed inset-0 z-[200]"

@@ -15,6 +15,7 @@ import { shallowRef } from "vue";
 
 import { useCounterStore } from "@/stores/counter";
 import { useFileDialog, useTimeoutFn, useDropZone, useMagicKeys, whenever } from "@vueuse/core";
+import Tooltip from "./ui/Tooltip.vue";
 
 const keys = useMagicKeys();
 const magicImportDB = keys["ctrl+alt+i"];
@@ -65,12 +66,17 @@ function onDrop(files) {
 
 <template>
   <AlertDialogRoot v-model:open="counter.showImportModal">
-    <AlertDialogTrigger
-      class="flex items-center justify-center h-12 gap-2 px-2 text-xs border outline-none border-secondary bg-background hover:bg-background/50 focus-visible:border-primary focus-visible:bg-primary/10"
+    <Tooltip
+      shortcut="ctrl+alt+i"
+      side="top"
     >
-      <Download class="size-4" />
-      <span class="">ImportarDB</span>
-    </AlertDialogTrigger>
+      <AlertDialogTrigger
+        class="flex items-center justify-center h-12 gap-2 px-2 text-xs border outline-none border-secondary bg-background hover:bg-background/50 focus-visible:border-primary focus-visible:bg-primary/10"
+      >
+        <Download class="size-4" />
+        <span class="">ImportarDB</span>
+      </AlertDialogTrigger>
+    </Tooltip>
     <AlertDialogPortal>
       <AlertDialogOverlay
         class="bg-secondary/90 data-[state=open]:animate-overlayShow fixed inset-0 z-[70]"

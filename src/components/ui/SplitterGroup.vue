@@ -3,13 +3,21 @@ import { shallowRef } from "vue";
 import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "radix-vue";
 import { ArrowRightToLine } from "lucide-vue-next";
 import Tooltip from "@/components/ui/Tooltip.vue";
-import { useKeyModifier } from '@vueuse/core'
+import { useKeyModifier, useMagicKeys, whenever } from '@vueuse/core'
 import { useCounterStore } from "@/stores/counter";
 const panelRef = shallowRef()
 const layout = shallowRef(0)
+const keys = useMagicKeys();
 
 const ExpandAll = useKeyModifier('Control', { events: ['mouseup', 'mousedown'] })
 const counter = useCounterStore();
+const magicExpandDocument = keys["ctrl+alt-NumpadAdd"];
+
+
+whenever(magicExpandDocument, (n) => {
+  if (n) 
+    expandAllScreen()
+})
 
 function expandAllScreen() {
   if (panelRef.value.isCollapsed) {

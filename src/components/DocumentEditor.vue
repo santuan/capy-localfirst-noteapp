@@ -55,6 +55,7 @@ const counter = useCounterStore();
     </Editor>
     <button
       v-show="!counter.loaded_id"
+      v-if="counter.content_editable"
       @click="counter.create_project()"
       :disabled="counter.project_name === ''"
       :class="counter.project_name

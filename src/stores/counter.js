@@ -220,7 +220,6 @@ export const useCounterStore = defineStore("counter", () => {
         };
 
         const settings = useSettingsStore();
-        console.log(settings.init_empty)
         if (settings.init_empty === true) {
           status.value = "CHANGING";
           const new_project_id = await db.projects.add({

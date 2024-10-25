@@ -23,7 +23,6 @@ import SearchItemChecked from "./SearchItemChecked.vue";
 import SelectSort from "./ui/SelectSort.vue";
 import ButtonCreateDocument from "./ui/ButtonCreateDocument.vue";
 import EditDatabaseTitle from "./ui/EditDatabaseTitle.vue";
-import Tooltip from "./ui/Tooltip.vue";
 
 const target = shallowRef(null);
 const editing = shallowRef(false);

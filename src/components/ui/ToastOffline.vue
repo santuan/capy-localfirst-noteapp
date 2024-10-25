@@ -16,7 +16,6 @@ watch(offlineReady, (value) => {
 
 watch(needRefresh, (value) => {
   if (value) {
-    console.log('Nueva versión disponible')
     toast.info('Nueva versión disponible', {
       description: 'Click en actualizar',
       duration: Infinity,
