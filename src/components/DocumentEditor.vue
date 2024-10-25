@@ -37,7 +37,6 @@ const counter = useCounterStore();
           v-if="counter.loaded_id === ''"
           class="absolute inset-0 overflow-hidden flex justify-center items-center w-full"
         >
-          <p>Seleccione un item para visualizar</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="absolute inset-0 opacity-[0.02]"
