@@ -148,7 +148,7 @@ onBeforeUnmount(() => {
 <template>
   <div
     v-if="editor"
-    class="grid EditorCK w-full px-0 md:px-2"
+    class="grid EditorCK w-full pl-3 pr-1 md:px-2"
   >
     <div
       v-if="toolbar"

@@ -99,10 +99,10 @@ if(window.matchMedia("(any-hover: none)").matches) {
                     class="space-y-0.5"
                     v-auto-animate
                   >
-                    <label class="text-sm font-medium ">
+                    <h3 class="text-sm font-medium text-pretty mt-0">
                       Tour
-                    </label>
-                    <p class="text-xs text-muted-foreground">
+                    </h3>
+                    <p class="text-xs text-muted-foreground text-balance">
                       Iniciar un recorrido por las principales funciones de la app.
                     </p>
                   </div>
@@ -118,9 +118,10 @@ if(window.matchMedia("(any-hover: none)").matches) {
                   class="flex-row items-start justify-between flex p-3 border border-secondary"
                 >
                   <div class="space-y-0.5">
-                    <label class="text-sm font-medium ">
-                      Puntero del mouse </label>
-                    <p class="text-xs text-muted-foreground">
+                    <h3 class="text-sm font-medium text-pretty mt-0">
+                      Puntero del mouse
+                    </h3>
+                    <p class="text-xs text-muted-foreground text-balance">
                       Activa o desactiva la manito en el cursor del mouse.
                     </p>
                   </div>
@@ -140,9 +141,11 @@ if(window.matchMedia("(any-hover: none)").matches) {
                 </div>
                 <div class="relative flex flex-row items-start justify-between p-3 border border-secondary">
                   <div class="space-y-0.5">
-                    <label class="text-sm font-medium "> Modo
-                      de color </label>
-                    <p class="text-xs text-muted-foreground">
+                    <h3 class="text-sm font-medium text-pretty mt-0">
+                      Modo
+                      de color
+                    </h3>
+                    <p class="text-xs text-muted-foreground text-balance">
                       Alterná entre modo oscuro/claro/sistema, tambien podes elegir un color primario.
                     </p>
                   </div>
@@ -151,9 +154,10 @@ if(window.matchMedia("(any-hover: none)").matches) {
 
                 <div class="flex flex-row items-start justify-between gap-3 pt-2 p-3 border border-secondary">
                   <div class="space-y-0.5">
-                    <label class="text-sm font-medium ">
-                      Exportar al iniciar.</label>
-                    <p class="text-xs text-muted-foreground">
+                    <h3 class="text-sm font-medium text-pretty mt-0">
+                      Exportar al iniciar.
+                    </h3>
+                    <p class="text-xs text-muted-foreground text-balance">
                       Cuando la opcion está activada opción aparecerá la posibilidad de exportar la DB al iniciar la aplicación.
                     </p>
                   </div>
@@ -168,8 +172,10 @@ if(window.matchMedia("(any-hover: none)").matches) {
 
                 <div class="flex flex-row items-start justify-between gap-3 pt-2 p-3 border border-secondary">
                   <div class="space-y-0.5">
-                    <label class="text-sm font-medium ">Iniciar DB con info</label>
-                    <p class="text-xs text-muted-foreground">
+                    <h3 class="text-sm font-medium text-pretty mt-0">
+                      Iniciar DB con info
+                    </h3>
+                    <p class="text-xs text-muted-foreground text-balance">
                       Cuando la opción está activada la base se inicia con un documento de ejemplo
                     </p>
                   </div>
@@ -193,11 +199,12 @@ if(window.matchMedia("(any-hover: none)").matches) {
                 <h4 class="mt-2 mb-0 text-xs text-red-600">
                   Atención!
                 </h4>
-                <div class="flex flex-row items-center justify-between gap-3 p-3 border border-destructive">
-                  <label
-                    class="text-sm font-medium text-muted-foreground"
+                <div class="grid grid-cols-2 sm:flex flex-row items-start justify-between jus gap-3 p-3 border border-destructive">
+                  <h3
+                    class="text-sm mt-0 font-medium text-muted-foreground text-balance"
                   >
-                    Eliminar la base de datos </label>
+                    Eliminar base de datos
+                  </h3>
                   <DialogDeleteDB />
                 </div>
               </div>
