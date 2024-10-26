@@ -248,14 +248,14 @@ export const useCounterStore = defineStore("counter", () => {
         if (selectedState) file_name.value = selectedState.name;
 
         // Get first project from db.projects
-        const firstProject = await db.projects.toCollection().first();
-        if (firstProject) {
+        const last_created_project = await db.projects.toCollection().last();
+        if (last_created_project) {
           // Set content in editor
-          project_body.value = firstProject.project_data.body;
-          project_name.value = firstProject.project_data.name;
-          project_fixed.value = firstProject.project_data.fixed;
-          project_checked.value = firstProject.project_data.checked;
-          loaded_id.value = firstProject.id;
+          project_body.value = last_created_project.project_data.body;
+          project_name.value = last_created_project.project_data.name;
+          project_fixed.value = last_created_project.project_data.fixed;
+          project_checked.value = last_created_project.project_data.checked;
+          loaded_id.value = last_created_project.id;
           // Set content_editable to false
           content_editable.value = false;
         }
