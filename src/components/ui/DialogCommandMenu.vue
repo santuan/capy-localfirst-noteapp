@@ -30,6 +30,12 @@ function close() {
   open.value = false
 }
 
+function new_document() {
+  counter.clear_editor();
+  counter.content_editable = true;
+  open.value = false
+}
+
 </script>
 
 <template>
@@ -82,6 +88,19 @@ function close() {
                 class="cursor-default font-mono text-xs px-4 py-2 rounded-md text-foreground data-[highlighted]:bg-muted inline-flex w-full items-center gap-4"
               >
                 <span>{{ item.project_data.name }}</span>
+                <!-- <SearchItem :data="item" /> -->
+              </ComboboxItem>
+            </ComboboxGroup>
+            <ComboboxGroup>
+              <ComboboxLabel class="px-4 text-muted-foreground font-semibold mt-3 mb-3 font-mono">
+                Acciones
+              </ComboboxLabel>
+              <ComboboxItem
+                value="crear documento"
+                @select="new_document()"
+                class="cursor-default font-mono text-xs px-4 py-2 rounded-md text-foreground data-[highlighted]:bg-muted inline-flex w-full items-center gap-4"
+              >
+                <span>Crear documento</span>
                 <!-- <SearchItem :data="item" /> -->
               </ComboboxItem>
             </ComboboxGroup>

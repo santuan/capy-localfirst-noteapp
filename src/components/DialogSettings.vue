@@ -155,10 +155,10 @@ if(window.matchMedia("(any-hover: none)").matches) {
                 <div class="flex flex-row items-start justify-between gap-3 pt-2 p-3 border border-secondary">
                   <div class="space-y-0.5">
                     <h3 class="text-sm font-medium text-pretty mt-0">
-                      Exportar al iniciar.
+                      Exportar al iniciar
                     </h3>
                     <p class="text-xs text-muted-foreground text-balance">
-                      Cuando la opcion está activada opción aparecerá la posibilidad de exportar la DB al iniciar la aplicación.
+                      Cuando la opción está activada opción aparecerá la posibilidad de exportar la DB al iniciar la aplicación.
                     </p>
                   </div>
                   <button
@@ -199,13 +199,15 @@ if(window.matchMedia("(any-hover: none)").matches) {
                 <h4 class="mt-2 mb-0 text-xs text-red-600">
                   Atención!
                 </h4>
-                <div class="grid grid-cols-2 sm:flex flex-row items-start justify-between jus gap-3 p-3 border border-destructive">
+                <div class="grid grid-cols-2 sm:flex flex-row items-center justify-between jus gap-3 p-3 border border-destructive">
                   <h3
-                    class="text-sm mt-0 font-medium text-muted-foreground text-balance"
+                    class="text-sm m-0 font-medium text-muted-foreground text-balance"
                   >
                     Eliminar base de datos
                   </h3>
-                  <DialogDeleteDB />
+                  <div class="flex justify-end items-center">
+                    <DialogDeleteDB />
+                  </div>
                 </div>
               </div>
             </article>

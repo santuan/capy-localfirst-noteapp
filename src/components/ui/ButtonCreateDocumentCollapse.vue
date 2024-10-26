@@ -9,13 +9,10 @@ const counter = useCounterStore();
 const { loaded_id } = storeToRefs(counter);
 
 function new_document() {
-  if (largerThanLg.value === true) {
-    counter.clear_editor();
-    counter.content_editable = true;
-  } else {
-    counter.clear_editor();
+  counter.clear_editor();
+  counter.content_editable = true;
+  if (!largerThanLg.value) {
     counter.showProjects = false;
-    counter.content_editable = true;
   }
 }
 

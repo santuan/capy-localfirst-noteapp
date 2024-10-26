@@ -237,16 +237,9 @@ function setVideo() {
           <template v-else-if="editor.isActive('heading', { level: 6 })">
             Título nivel 6
           </template>
-          <template v-else-if="editor.isActive('bulletList')">
-            Lista desordenada
-          </template>
-          <template v-else-if="editor.isActive('orderedList')">
-            Lista ordenada
-          </template>
           <template v-else>
             Párrafo
           </template>
-          <span class="sr-only">Alineación de texto</span>
           <ChevronDown class="size-4 shrink-0" />
         </DropdownMenuTrigger>
         <DropdownMenuContent

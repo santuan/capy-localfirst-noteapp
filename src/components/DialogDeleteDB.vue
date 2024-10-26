@@ -65,7 +65,7 @@ onMounted(() => {
           class="text-foreground hover:bg-secondary/80 hover:text-foreground  absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center focus:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:text-primary"
           aria-label="Close"
         >
-          <X class="size-4 text-primary-foreground" />
+          <X class="size-4 text-foreground" />
         </DialogClose>
         <DialogTitle class="text-foreground m-0 text-[17px] font-semibold">
           Eliminar base de datos local
