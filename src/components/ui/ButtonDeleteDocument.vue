@@ -20,7 +20,7 @@ import {
 import Tooltip from "./Tooltip.vue";
 const counter = useCounterStore();
 const keys = useMagicKeys();
-const magicDeleteDocument = keys["ctrl+shift-delete"];
+const magicDeleteDocument = keys["shift+delete"];
 const showAlertDialog = ref(false);
 
 whenever(magicDeleteDocument, (n) => {
@@ -35,7 +35,7 @@ whenever(magicDeleteDocument, (n) => {
       name="Eliminar documento"
       side="top"
       :align="'end'"
-      shortcut="ctrl + shift + delete"
+      shortcut="shift + delete"
     >
       <AlertDialogTrigger
         class="fixed bottom-0 right-0 flex items-center justify-center ml-auto text-xs ButtonDeleteDocument size-8 hover:bg-primary/30 bg-primary/10"
@@ -45,8 +45,8 @@ whenever(magicDeleteDocument, (n) => {
       </AlertDialogTrigger>
     </Tooltip>
     <AlertDialogPortal>
-      <AlertDialogOverlay class="fixed inset-0 z-50 bg-black/50" />
-      <AlertDialogContent class="md:data-[state=open]:animate-contentShow fixed z-50 w-[95vw] max-w-xs rounded-lg p-4 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-background text-foreground border border-secondary font-mono">
+      <AlertDialogOverlay class="fixed inset-0 z-[80] bg-black/50" />
+      <AlertDialogContent class="md:data-[state=open]:animate-contentShow fixed z-[80] w-[95vw] max-w-xs rounded-lg p-4 md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-background text-foreground border border-secondary font-mono">
         <AlertDialogTitle class="text-sm font-medium">
           Eliminar documento
         </AlertDialogTitle>

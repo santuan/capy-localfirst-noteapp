@@ -32,7 +32,7 @@ watch(debounced, (v) => {
 function clear() {
   counter.clearDatabase();
   setTimeout(() => {
-    if (settings.init_empty) {
+    if (settings.init_db_with_example_doc) {
       toast.success('Base de datos eliminada y se creó un documento de ejemplo.')
     } else {
       toast.success('Base de datos eliminada.')

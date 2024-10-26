@@ -21,8 +21,8 @@ function DriverJsInit() {
     steps: [
       {
         popover: {
-          title: 'Holis 👋',
-          description: 'Este tutorial se puede navegar utilizando las flechas del teclado. Puede repetirlo desde la configuración.',
+          title: 'Tutorial 👋',
+          description: 'Esta app está en desarrollo. Navegá el tutorial utilizando las flechas del teclado. Puede repetirlo desde la configuración.',
         }
       },
       // {

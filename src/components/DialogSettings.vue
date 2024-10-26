@@ -180,12 +180,12 @@ if(window.matchMedia("(any-hover: none)").matches) {
                     </p>
                   </div>
                   <button
-                    @click="settings.toggle_init_empty()"
+                    @click="settings.toggle_init_db_with_example_doc()"
                     class="flex focus:border-primary ring-foreground items-center justify-center border border-secondary bg-background shrink-0 hover:bg-secondary/80 size-8"
-                    :class="settings.init_empty ? 'hover:!bg-primary bg-primary hover:text-primary-foreground text-primary-foreground' : 'text-muted-foreground'"
+                    :class="settings.init_db_with_example_doc ? 'hover:!bg-primary bg-primary hover:text-primary-foreground text-primary-foreground' : 'text-muted-foreground'"
                   >
                     <BookOpenCheck
-                      v-if="settings.init_empty"
+                      v-if="settings.init_db_with_example_doc"
                       class="size-5"
                     />
                     <BookOpen
