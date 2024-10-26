@@ -228,8 +228,11 @@ export const useCounterStore = defineStore("counter", () => {
           project_checked.value = initialProjectData.checked;
           loaded_id.value = new_project_id;
           status.value = "READY";
+          return
         }
-        return
+        if (settings.init_db_with_example_doc === false) {
+          content_editable.value = true;
+        }
       }
       if (count === 1) {
         const selectedState = await db.file.get(1);
